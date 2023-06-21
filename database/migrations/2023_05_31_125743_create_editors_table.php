@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('editors', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->string('institution');
             $table->string('designation_id');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->string('position')->nullable();
             $table->timestamps();
         });

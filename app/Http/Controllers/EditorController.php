@@ -2,64 +2,80 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEditorRequest;
+use App\Http\Requests\UpdateEditorRequest;
+use App\Models\Designation;
 use App\Models\Editor;
+use App\Traits\FileTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EditorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    use FileTrait;
+
+    public function __construct(protected Editor $editor)
+    {
+        //
+    }
     public function index()
     {
-        //
+        $editor = $this->editor->get();
+        return view('user.pages.editor', compact('editor'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function editor()
     {
-        //
+        $designations = Designation::get();
+        $editors = $this->editor->get();
+        return view('administration.pages.editor', compact('editors', 'designations'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $fileNameToStore = $this->fileUpload('image', 'storage/editors/');
+        $show = $this->editor->create([
+            'name' => $request->name,
+            'institution' => $request->institution,
+            'designation_id' => $request->designation_id,
+            'image' => $fileNameToStore,
+        ]);
+
+        return redirect()->back();
+        // return view('administration.pages.editor', compact('editor'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Editor $editor)
+    public function edit($editor)
     {
-        //
+        $designations = Designation::get();
+        $editor = $this->editor->find($editor);
+        $editors = $this->editor->orderBy('id', 'desc')->get();
+        return view('administration.pages.edit-editor', compact('editors', 'editor', 'designations'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Editor $editor)
+    public function updateImage($editor)
     {
-        //
+        $editor = $this->editor->find($editor);
+        $fileNameToStore = $this->fileUpload('image', 'storage/editors/');
+        Storage::delete('storage/editor/' . $editor->image);
+        $editor->image = $fileNameToStore;
+        $editor->save();
+        return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Editor $editor)
+    public function update(UpdateEditorRequest $request, $editor)
     {
-        //
+
+        $this->editor->find($editor)->update($request->validated());
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Editor $editor)
+    public function delete($editor)
     {
-        //
+        $this->editor->find($editor)->delete();
+        $designations = Designation::get();
+        $editors = $this->editor->orderBy('id', 'desc')->get();
+        return view('administration.pages.editor', compact('editors', 'designations'));
     }
 }
