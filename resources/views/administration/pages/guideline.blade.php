@@ -1,6 +1,6 @@
 @extends('administration.layout.master', [($bodyClass = 'nk-body bg-lighter npc-default has-sidebar')])
 @section('pageName')
-    Call for paper
+    Guideline
 @endsection
 @push('style')
     <link rel="stylesheet" href="{{ asset('administration/assets2/bundles/plugins/dropify/css/dropify.css') }}">
@@ -21,7 +21,7 @@
         <div class="components-preview wide-md mx-auto">
             <div class="nk-block-head nk-block-head-lg wide-sm">
                 <div class="nk-block-head-content">
-                    <h2 class="nk-block-title fw-normal">Update Call for paper</h2>
+                    <h2 class="nk-block-title fw-normal">Guideline</h2>
                 </div>
             </div>
             <div class="nk-block nk-block-lg">
@@ -29,13 +29,13 @@
                     <div class="col-lg-12">
                         <div class="card card-bordered h-100">
                             <div class="card-inner">
-                                <form action="{{ route('admin.update.paper') }}" method="POST">
+                                <form action="{{ route('admin.update.guideline') }}" method="POST">
                                     @method('post')
                                     @csrf
                                     <div class="form-group">
-                                        <label class="form-label">Call for paper</label>
+                                        <label class="form-label">Guideline</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message">{{ $paper->description }}</textarea>
+                                            <textarea class="form-control form-control-sm" name="guideline" placeholder="Write your message">{{ $guideline->guideline ?? 'none' }}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
@@ -44,6 +44,7 @@
                             </div>
                         </div>
                     </div>
+
 
                 </div>
             </div>
@@ -70,7 +71,6 @@
             $('#employee_data').DataTable();
         });
     </script>
-
 
     <script>
         tinymce.init({

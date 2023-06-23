@@ -76,6 +76,14 @@ class ArticleController extends Controller
         return redirect()->back();
     }
 
+    public function like($item)
+    {
+        $article = $this->article->find($item);
+        ++$article->popularity;
+        $article->save();
+        return redirect()->back();
+    }
+
     public function publish($article)
     {
         $article = $this->article->find($article);

@@ -16,8 +16,9 @@ class HomeController extends Controller
         $slider = Slider::get();
         $article = Article::latest('id')->first();
         $about = About::first();
-        $articles = Article::get()->where('publish_status', PublishStatus::PUBLISHED);
+        $articles = Article::latest('id')->limit(4)->get();
+        $picks = Article::where('popularity', '>=', '1')->limit(4)->get();
         $paper = Paper::first();
-        return view('user.pages.home', compact('slider', 'article', 'articles', 'about', 'paper'));
+        return view('user.pages.home', compact('slider', 'article', 'articles', 'about', 'paper', 'picks'));
     }
 }

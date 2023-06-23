@@ -20,8 +20,8 @@ class EditorController extends Controller
     }
     public function index()
     {
-        $editor = $this->editor->get();
-        return view('user.pages.editor', compact('editor'));
+        $designations = Designation::orderBy('designation')->with('editors')->get();
+        return view('user.pages.editor', compact('designations'));
     }
 
     public function editor()
@@ -33,7 +33,6 @@ class EditorController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $fileNameToStore = $this->fileUpload('image', 'storage/editors/');
         $show = $this->editor->create([
             'name' => $request->name,
@@ -43,7 +42,6 @@ class EditorController extends Controller
         ]);
 
         return redirect()->back();
-        // return view('administration.pages.editor', compact('editor'));
     }
 
     public function edit($editor)

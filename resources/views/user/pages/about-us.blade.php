@@ -20,7 +20,7 @@
                     <div class="lg:-mt-[330px] -mt-[299px]">
                         <div class="rounded-md bg-white shadow">
                             <div class="text-center py-8 p-6 border-b border-gray-100">
-                                <img src="assets/images/client/circle-logo.png"
+                                <img src="{{ asset('storage/logo/' . $about->image) }}"
                                     class="h-24 w-24 p-4 shadow-md mx-auto rounded-full block" alt="" />
                                 <h5 class="mt-5 text-xl font-semibold mb-0"> {{ $about->name }}</h5>
                             </div>

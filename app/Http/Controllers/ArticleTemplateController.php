@@ -8,28 +8,26 @@ use App\Http\Requests\UpdateArticleTemplateRequest;
 
 class ArticleTemplateController extends Controller
 {
-   public function __construct(protected ArticleTemplate $articleTemplate)
-   {
-    //
-   }
+    public function __construct(protected ArticleTemplate $articleTemplate)
+    {
+        //
+    }
     public function index()
     {
-       $articleTemplate = $this->articleTemplate->first();
-       return view('user.pages.article-template', compact('articleTemplate'));
+        $articleTemplate = $this->articleTemplate->first();
+        return view('user.pages.article-template', compact('articleTemplate'));
     }
 
-    public function createArticleTemplate()
+    public function create()
     {
         $articleTemplate = $this->articleTemplate->first();
-       return view('administration.pages.article-template', compact('articleTemplate'));
+        return view('administration.pages.article-template', compact('articleTemplate'));
     }
 
-    public function storeArticleTemplate(StoreArticleTemplateRequest $request)
+    public function update(StoreArticleTemplateRequest $request)
     {
-        $this->articleTemplate->create($request->validated());
         $articleTemplate = $this->articleTemplate->first();
-       return view('administration.pages.article-template', compact('articleTemplate'));
-
+        $articleTemplate->update($request->validated());
+        return redirect()->back();
     }
-
 }

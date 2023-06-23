@@ -154,153 +154,54 @@
             </div>
             <!--end grid-->
 
-            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-                <div class="group relative rounded-md overflow-hidden shadow text-center">
-                    <img src="{{ asset('user/assets/images/client/02.jpg') }}" alt="">
-                    <div
-                        class="absolute inset-0 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-black transition duration-300 ease-in">
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-[30px]">
+                @foreach ($picks as $pick)
+                    <div class="group relative rounded-md overflow-hidden shadow text-center">
+                        <img class="w-72 h-80" src="{{ asset('storage/volume/' . $pick->volume->image) }}" alt="">
+                        <div
+                            class="absolute inset-0 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-black transition duration-300 ease-in">
+                        </div>
+
+                        <div
+                            class="content absolute bottom-0 group-hover:bottom-6 start-0 end-0 transition-all duration-500 opacity-0 group-hover:opacity-100">
+                            <ul class=" relative -bottom-12 group-hover:bottom-0 transition-all duration-500 mt-4">
+                                <li class="inline"><a href=""
+                                        class="btn btn-primary border text-white rounded-md border-indigo-600 bg-indigo-600">View</a>
+                                </li>
+                            </ul>
+                            <!--end icon-->
+                        </div>
                     </div>
-
-                    <div
-                        class="content absolute bottom-0 group-hover:bottom-6 start-0 end-0 transition-all duration-500 opacity-0 group-hover:opacity-100">
-                        <h4 class="text-lg font-medium text-white">Calvin Carlo</h4>
-                        <p class="text-white/50 relative -bottom-5 group-hover:bottom-0 transition-all duration-500">Trainer
-                        </p>
-
-                        <ul class="list-none relative -bottom-12 group-hover:bottom-0 transition-all duration-500 mt-4">
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="facebook" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="instagram" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="twitter" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                        </ul>
-                        <!--end icon-->
-                    </div>
-                </div>
-
-                <div class="group relative rounded-md overflow-hidden shadow text-center">
-                    <img src="{{ asset('user/assets/images/client/02.jpg') }} " alt="">
-                    <div
-                        class="absolute inset-0 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-black transition duration-300 ease-in">
-                    </div>
-
-                    <div
-                        class="content absolute bottom-0 group-hover:bottom-6 start-0 end-0 transition-all duration-500 opacity-0 group-hover:opacity-100">
-                        <h4 class="text-lg font-medium text-white">Judith Williams</h4>
-                        <p class="text-white/50 relative -bottom-5 group-hover:bottom-0 transition-all duration-500">
-                            Trainer</p>
-
-                        <ul class="list-none relative -bottom-12 group-hover:bottom-0 transition-all duration-500 mt-4">
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="facebook" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="instagram" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="twitter" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                        </ul>
-                        <!--end icon-->
-                    </div>
-                </div>
-
-                <div class="group relative rounded-md overflow-hidden shadow text-center">
-                    <img src="{{ asset('user/assets/images/client/02.jpg') }}" alt="">
-                    <div
-                        class="absolute inset-0 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-black transition duration-300 ease-in">
-                    </div>
-
-                    <div
-                        class="content absolute bottom-0 group-hover:bottom-6 start-0 end-0 transition-all duration-500 opacity-0 group-hover:opacity-100">
-                        <h4 class="text-lg font-medium text-white">John Hodge</h4>
-                        <p class="text-white/50 relative -bottom-5 group-hover:bottom-0 transition-all duration-500">
-                            Trainer</p>
-
-                        <ul class="list-none relative -bottom-12 group-hover:bottom-0 transition-all duration-500 mt-4">
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="facebook" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="instagram" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="twitter" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                        </ul>
-                        <!--end icon-->
-                    </div>
-                </div>
-
-                <div class="group relative rounded-md overflow-hidden shadow text-center">
-                    <img src="{{ asset('user/assets/images/client/02.jpg') }}" alt="">
-                    <div
-                        class="absolute inset-0 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-black transition duration-300 ease-in">
-                    </div>
-
-                    <div
-                        class="content absolute bottom-0 group-hover:bottom-6 start-0 end-0 transition-all duration-500 opacity-0 group-hover:opacity-100">
-                        <h4 class="text-lg font-medium text-white">Frances Bartley</h4>
-                        <p class="text-white/50 relative -bottom-5 group-hover:bottom-0 transition-all duration-500">
-                            Trainer</p>
-
-                        <ul class="list-none relative -bottom-12 group-hover:bottom-0 transition-all duration-500 mt-4">
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="facebook" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="instagram" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="twitter" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="#"
-                                    class="btn btn-icon btn-sm border text-white rounded-md border-indigo-600 bg-indigo-600"><i
-                                        data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                        </ul>
-                        <!--end icon-->
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!--end grid-->
         </div>
         <!--end container-->
     </section>
-    <section class="py-10">
-        <div class="container md:mt-24">
+    <section class="mb-8">
+        <div class="container md:mt-8">
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Articles</h3>
             </div>
-            @foreach ($articles as $item)
-                <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-                    <!-- Start Bid -->
+
+            <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
+                <!-- Start Bid -->
+                @foreach ($articles as $item)
                     <div
                         class="group relative overflow-hidden bg-white rounded-md shadow hover:shadow-lg duration-500 ease-in-out">
                         <div class="relative">
-                            <img src="{{ asset('storage/volume/' . $item->volume->image) }}" alt="">
+                            <img class="w-72 h-80" src="{{ asset('storage/volume/' . $item->volume->image) }}"
+                                alt="">
                             <div
                                 class="absolute end-0 top-0 mt-6 me-6 opacity-0 group-hover:opacity-100 duration-500 ease-in-out">
-                                <a href="#!"
+                                <a href="{{ route('like', $item->id) }}"
                                     class="btn btn-icon text-lg bg-white border-0 shadow rounded-full text-red-600/20 hover:text-red-600 focus:text-red-600"><i
                                         class="mdi mdi-heart"></i></a>
                             </div>
 
                             <div
                                 class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 duration-500 ease-in-out">
-                                <a href="{{ asset('storage/article' . $item->file) }}"
+                                <a href="{{ asset('storage/article/' . $item->file) }}"
                                     class="btn btn-sm bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Download</a>
                             </div>
                         </div>
@@ -315,14 +216,13 @@
                                     <i class="mdi mdi-ethereum text-xl leading-none text-indigo-600 me-1"></i>
                                     <span class="block font-semibold text-indigo-600">{{ $item->pages }}</span>
                                 </div>
-                                <livewire:editor-counter>
 
                             </div>
                         </div>
                     </div>
-                    <!-- End Bid -->
-                </div>
-            @endforeach
+                @endforeach
+                <!-- End Bid -->
+            </div>
             <!--end grid-->
 
             <div class="grid md:grid-cols-12 grid-cols-1 mt-8">

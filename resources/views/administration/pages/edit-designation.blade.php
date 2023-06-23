@@ -68,6 +68,9 @@
                                                                 style="">
                                                                 <ul class="link-list-plain">
                                                                     <li><a
+                                                                            href="{{ route('admin.edit.designation', $item->id) }}">Edit</a>
+                                                                    </li>
+                                                                    <li><a
                                                                             href="{{ route('admin.delete.designation', $item->id) }}">Delete</a>
                                                                     </li>
                                                                 </ul>

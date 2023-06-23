@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\{AboutController, VolumeController, SliderController, ProfileController, AdminController, ManuscriptController, HomeController, ArticleController, DesignationController, EditorController, PaperCallController};
-
+use App\Http\Controllers\{AboutController, VolumeController, SliderController, ProfileController, AdminController, ManuscriptController, HomeController, ArticleController, ArticleTemplateController, DesignationController, EditorController, GuidelineController, PaperCallController};
+use App\Http\Livewire\EditorsPick;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +22,10 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/call-for-paper', [PaperCallController::class, 'index'])->name('paper');
+    Route::get('/article-template', [ArticleTemplateController::class, 'index'])->name('article.template');
+    Route::get('/guideline', [GuidelineController::class, 'index'])->name('guideline');
+    Route::get('/editor-board', [EditorController::class, 'index'])->name('editor');
+    Route::get('/like/{item}', [ArticleController::class, 'like'])->name('like');
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -58,13 +62,24 @@ Route::group(['middleware' => ['auth']], function () {
 
             Route::prefix('paper')->group(function () {
                 Route::get('/', [PaperCallController::class, 'paper'])->name('admin.paper');
-                Route::post('/store', [PaperCallController::class, 'store'])->name('admin.store.paper');
+                Route::post('/update', [PaperCallController::class, 'update'])->name('admin.update.paper');
             });
+
+            Route::prefix('guideline')->group(function () {
+                Route::get('/', [GuidelineController::class, 'create'])->name('admin.guideline');
+                Route::post('/update', [GuidelineController::class, 'update'])->name('admin.update.guideline');
+            });
+
 
             Route::prefix('volume')->group(function () {
                 Route::get('/', [VolumeController::class, 'volume'])->name('admin.volume');
                 Route::post('/store', [VolumeController::class, 'store'])->name('admin.store.volume');
                 Route::get('/delete/{volume}', [VolumeController::class, 'delete'])->name('admin.delete.volume');
+            });
+
+            Route::prefix('article-template')->group(function () {
+                Route::get('/', [ArticleTemplateController::class, 'create'])->name('admin.article.template');
+                Route::post('/store', [ArticleTemplateController::class, 'update'])->name('admin.update.article.template');
             });
 
             Route::prefix('designation')->group(function () {
@@ -74,7 +89,6 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('/update/{designation}', [DesignationController::class, 'update'])->name('admin.update.designation');
                 Route::get('/delete/{designation}', [DesignationController::class, 'delete'])->name('admin.delete.designation');
             });
-
 
             Route::prefix('editor')->group(function () {
                 Route::get('/', [EditorController::class, 'editor'])->name('admin.editor');

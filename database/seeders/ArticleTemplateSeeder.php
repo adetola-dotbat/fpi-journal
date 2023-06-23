@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ArticleTemplate;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,6 @@ class ArticleTemplateSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        ArticleTemplate::factory()->count(1)->create();
     }
 }

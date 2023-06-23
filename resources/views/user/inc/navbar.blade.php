@@ -3,11 +3,11 @@
         <!-- Logo container-->
         <a class="logo" href="index.html">
             <span class="inline-block">
-                <img src="{{ asset('user/assets/images/logo-dark.png') }}" class="l-dark" height="24" alt="" />
-                <img src="{{ asset('user/assets/images/logo-light.png') }}" class="l-light" height="24"
+                <img class="mt-4 w-14" src="{{ asset('user/assets/images/federalPolyLogo.png') }}" class="l-dark"
                     alt="" />
+                {{-- <img src="{{ asset('user/assets/images/federalPolyLogo.png') }}" class="l-light" alt="" /> --}}
             </span>
-            <img src="{{ asset('user/assets/images/logo-light.png') }}" height="24" class="hidden" alt="" />
+            {{-- <img src="{{ asset('user/assets/images/federalPolyLogo.png') }}" class="hidden" alt="" /> --}}
         </a>
 
         <!-- End Logo container-->
@@ -67,10 +67,10 @@
                     <a href="javascript:void(0)">Authors</a><span class="menu-arrow"></span>
                     <ul class="submenu">
                         <li>
-                            <a href="" class="sub-menu-item">Template</a>
+                            <a href="{{ route('article.template') }}" class="sub-menu-item">Template</a>
                         </li>
                         <li>
-                            <a href="" class="sub-menu-item">Guidelines</a>
+                            <a href="{{ route('guideline') }}" class="sub-menu-item">Guidelines</a>
                         </li>
                         <li><a href="" class="sub-menu-item">Widget</a></li>
                     </ul>
@@ -87,11 +87,8 @@
                         <li><a href="" class="sub-menu-item">Widget</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('paper') }}" class="sub-menu-item">Call for paper</a></li>
 
-                <li><a href="" class="sub-menu-item">Editorial Board</a></li>
-
-
+                <li><a href="{{ route('editor') }}" class="sub-menu-item">Editorial Board</a></li>
                 <li>
                     <a href="" class="sub-menu-item">Contact</a>
                 </li>

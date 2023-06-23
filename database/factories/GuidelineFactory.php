@@ -17,7 +17,7 @@ class GuidelineFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'guideline' => fake()->sentence(),
         ];
     }
 }

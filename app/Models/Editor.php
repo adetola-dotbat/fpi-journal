@@ -11,7 +11,7 @@ class Editor extends Model
 
     protected $guarded = ['id'];
 
-    public function designations()
+    public function designation()
     {
         return $this->belongsTo(Designation::class, 'designation_id');
     }

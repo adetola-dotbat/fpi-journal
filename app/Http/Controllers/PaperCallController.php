@@ -23,7 +23,7 @@ class PaperCallController extends Controller
         $paper = $this->paper->first();
         return view('administration.pages.call-for-papers', compact('paper'));
     }
-    public function store(CallForPaperRequest $request)
+    public function update(CallForPaperRequest $request)
     {
         $paper = $this->paper->first();
         $paper->update($request->validated());

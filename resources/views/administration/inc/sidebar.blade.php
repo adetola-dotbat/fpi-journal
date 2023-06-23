@@ -36,6 +36,9 @@
                         <li class="nk-menu-item"><a href="{{ route('admin.paper') }}" class="nk-menu-link"><span
                                     class="nk-menu-text">Call for papers
                                 </span></a></li>
+                        <li class="nk-menu-item"><a href="{{ route('admin.guideline') }}" class="nk-menu-link"><span
+                                    class="nk-menu-text">Guideline
+                                </span></a></li>
 
                     </ul>
                 </li>
@@ -62,6 +65,10 @@
                                     class="nk-menu-text">Article
                                 </span></a>
                         </li>
+                        <li class="nk-menu-item"><a href="{{ route('admin.article.template') }}"
+                                class="nk-menu-link"><span class="nk-menu-text">Article Template
+                                </span></a>
+                        </li>
                         <li class="nk-menu-item"><a href="{{ route('admin.volume') }}" class="nk-menu-link"><span
                                     class="nk-menu-text">Volume
                                 </span></a></li>
@@ -72,8 +79,8 @@
                             class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span><span
                             class="nk-menu-text">Editor(s) and Designations</span></a>
                     <ul class="nk-menu-sub">
-                        <li class="nk-menu-item"><a href="{{ route('admin.designation') }}" class="nk-menu-link"><span
-                                    class="nk-menu-text">Designations</span></a></li>
+                        <li class="nk-menu-item"><a href="{{ route('admin.designation') }}"
+                                class="nk-menu-link"><span class="nk-menu-text">Designations</span></a></li>
                         <li class="nk-menu-item"><a href="{{ route('admin.editor') }}" class="nk-menu-link"><span
                                     class="nk-menu-text">Editor</span></a></li>
                     </ul>

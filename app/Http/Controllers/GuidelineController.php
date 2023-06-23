@@ -9,25 +9,25 @@ use App\Http\Requests\UpdateGuidelineRequest;
 class GuidelineController extends Controller
 {
     public function __construct(protected Guideline $guideline)
-   {
-    //
-   }
+    {
+        //
+    }
     public function index()
     {
-       $guideline = $this->guideline->first();
-       return view('user.pages.guideline', compact('guideline'));
+        $guideline = $this->guideline->first();
+        return view('user.pages.guideline', compact('guideline'));
     }
 
-    public function createGuideline()
+    public function create()
     {
         $guideline = $this->guideline->first();
-       return view('administration.pages.guideline', compact('guideline'));
+        return view('administration.pages.guideline', compact('guideline'));
     }
 
-    public function storeGuideline(StoreGuidelineRequest $request)
+    public function update(StoreGuidelineRequest $request)
     {
-        $this->guideline->create($request->validated());
         $guideline = $this->guideline->first();
-       return view('administration.pages.guideline', compact('guideline'));
+        $guideline->update($request->validated());
+        return redirect()->back();
     }
 }

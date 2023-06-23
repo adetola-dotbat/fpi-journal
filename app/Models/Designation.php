@@ -11,7 +11,7 @@ class Designation extends Model
 
     protected $guarded = ['id'];
 
-    public function editor()
+    public function editors()
     {
         return $this->hasMany(Editor::class);
     }
