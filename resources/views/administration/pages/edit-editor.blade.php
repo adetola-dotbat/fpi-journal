@@ -113,7 +113,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->institution }}</td>
-                                                    <td>{{ $item->designations->designation }}</td>
+                                                    <td>{{ $item->designation->designation }}</td>
                                                     <td> <img width="200" height="100"
                                                             src="{{ asset('/storage/editors/' . $item->image) }}">
                                                     </td>

@@ -1,6 +1,6 @@
 @extends('administration.layout.master', [($bodyClass = 'nk-body bg-lighter npc-default has-sidebar')])
 @section('pageName')
-    Volume
+    Edit Volume
 @endsection
 @push('style')
     <link rel="stylesheet" href="{{ asset('administration/assets2/bundles/plugins/dropify/css/dropify.css') }}">
@@ -20,7 +20,7 @@
         <div class="components-preview wide-md mx-auto">
             <div class="nk-block-head nk-block-head-lg wide-sm">
                 <div class="nk-block-head-content">
-                    <h2 class="nk-block-title fw-normal">Volume</h2>
+                    <h2 class="nk-block-title fw-normal">Edit Volume</h2>
                 </div>
             </div>
 
@@ -30,25 +30,47 @@
                     <div class="col-lg-12">
                         <div class="card card-bordered h-100">
                             <div class="card-inner">
-                                <form action="{{ route('admin.store.volume') }}" method="POST"
+                                <form action="{{ route('admin.update.volume.image', $volume->id) }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @method('post')
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    Image</label>
+                                                <input type="file" name="image" class="form-file-input dropify"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-lg btn-primary">Change
+                                                    Image
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mt-4">
+                                                <img height="250" width="400"
+                                                    src="{{ asset('/storage/volume/' . $volume->image) }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
+                                <form action="{{ route('admin.update.volume', $volume->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @method('post')
                                     @csrf
                                     <div class="form-group">
-                                        <label class="form-label">Volume
-                                            Image</label>
-                                        <input type="file" name="image" class="form-file-input dropify">
-                                    </div>
-
-                                    <div class="form-group">
                                         <label class="form-label">Title</label>
-                                        <input type="text" placeholder="Title" name="title" class="form-control">
+                                        <input type="text" value="{{ $volume->title }}" name="title"
+                                            class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Description</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message"></textarea>
+                                            <textarea class="form-control form-control-sm" name="description">{{ $volume->description }}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
@@ -92,11 +114,14 @@
                                                                 style="">
                                                                 <ul class="link-list-plain">
                                                                     <li><a
+                                                                            href="{{ route('admin.edit.volume', $item->id) }}">Edit</a>
+                                                                    </li>
+                                                                    <li><a
                                                                             href="{{ route('admin.status.volume', $item->id) }}">
                                                                             @if ($item->status == 'pending')
                                                                                 Activate
                                                                             @else
-                                                                                Deactive
+                                                                                Inactive
                                                                             @endif
                                                                         </a>
                                                                     </li>

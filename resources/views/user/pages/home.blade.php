@@ -54,36 +54,40 @@
         <div class="container">
             <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
                 <div class="lg:col-span-5 md:col-span-6">
+
                     <div class="relative">
-                        <img src="{{ asset('storage/volume/' . $article->volume->image) }}"
+                        <img src="{{ asset('storage/volume/' . $volume->image) }}"
                             class="rounded-full lg:w-[400px] w-[280px]" alt="">
                         <div class="absolute -end-5 -bottom-16">
-                            <img src="{{ asset('storage/volume/' . $article->volume->image) }}"
+                            <img src="{{ asset('storage/volume/' . $volume->image) }}"
                                 class="rounded-full lg:w-[280px] w-[200px] border-8 border-white" alt="">
                         </div>
                     </div>
                 </div>
-
                 <div class="lg:col-span-7 md:col-span-6 mt-8 md:mt-0">
                     <div class="lg:ms-5">
                         <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">
-                            {{ $article->title }}</h3>
+                            {{ $volume->title }}
+                            @if ($volume->status == 'pending')
+                                - Coming Soon
+                            @endif
+                        </h3>
 
-                        <p class="text-slate-400 max-w-xl"> {!! $article->abstract !!} </p>
+                        <p class="text-slate-400 max-w-xl"> {!! $volume->description !!} </p>
+                        @if ($volume->status == 'activated')
+                            <ul class="list-none text-slate-400 mt-4">
+                                <li class="mb-1 flex"><i class="uil uil-check-circle text-indigo-600 text-xl me-2"></i>
+                                    {{ $article->author }}</li>
+                                <li class="mb-1 flex"><i class="uil uil-check-circle text-indigo-600 text-xl me-2"></i>
+                                    {{ $article->pages }} Pages</li>
 
-                        <ul class="list-none text-slate-400 mt-4">
-                            <li class="mb-1 flex"><i class="uil uil-check-circle text-indigo-600 text-xl me-2"></i>
-                                {{ $article->author }}</li>
-                            <li class="mb-1 flex"><i class="uil uil-check-circle text-indigo-600 text-xl me-2"></i>
-                                {{ $article->pages }} Pages</li>
-
-                        </ul>
-
-                        <div class="mt-6">
-                            <a href="{{ asset('/storage/article/' . $article->file) }}" target="_blank"
-                                class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md me-2 mt-2"><i
-                                    class="uil uil-envelope"></i>Download</a>
-                        </div>
+                            </ul>
+                            <div class="mt-6">
+                                <a href="{{ asset('/storage/article/' . $article->file) }}" target="_blank"
+                                    class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md me-2 mt-2"><i
+                                        class="uil uil-envelope"></i>Download</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -91,12 +95,12 @@
         </div>
         <!--end container-->
     </section>
-
     <section>
         <div class="container md:mt-24">
             <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
                 <div class="lg:col-span-5 md:col-span-6 order-1 md:order-2">
-                    <img src="{{ asset('user/assets/images/client/05.jpg') }}" class="rounded-full" alt="">
+                    <img src="{{ asset('storage/editors/' . $editorInCharge->image) }}" class="rounded-full"
+                        alt="">
                 </div>
 
                 <div class="lg:col-span-7 md:col-span-6 order-2 md:order-1">
@@ -107,7 +111,8 @@
                         <p class="text-slate-400 max-w-xl">
                             {{ $about->welcome_message }}
                         </p>
-
+                        <i class="uil uil-check-circle text-indigo-600 text-xl me-2"></i>
+                        {{ $editorInCharge->name }} - Chief Editor
                         <div class="mt-6">
                             <a href="{{ route('about') }}"
                                 class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Read
@@ -155,7 +160,7 @@
             <!--end grid-->
 
             <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-[30px]">
-                @foreach ($picks as $pick)
+                {{-- @foreach ($picks as $pick)
                     <div class="group relative rounded-md overflow-hidden shadow text-center">
                         <img class="w-72 h-80" src="{{ asset('storage/volume/' . $pick->volume->image) }}" alt="">
                         <div
@@ -172,7 +177,7 @@
                             <!--end icon-->
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
             </div>
             <!--end grid-->
         </div>
@@ -186,7 +191,7 @@
 
             <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
                 <!-- Start Bid -->
-                @foreach ($articles as $item)
+                {{-- @foreach ($articles as $item)
                     <div
                         class="group relative overflow-hidden bg-white rounded-md shadow hover:shadow-lg duration-500 ease-in-out">
                         <div class="relative">
@@ -220,7 +225,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
                 <!-- End Bid -->
             </div>
             <!--end grid-->

@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Enums\PublishStatus;
 use App\Models\About;
 use App\Models\Article;
+use App\Models\Designation;
+use App\Models\Editor;
 use App\Models\Paper;
 use App\Models\Slider;
+use App\Models\Volume;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,6 +22,14 @@ class HomeController extends Controller
         $articles = Article::latest('id')->limit(4)->get();
         $picks = Article::where('popularity', '>=', '1')->limit(4)->get();
         $paper = Paper::first();
-        return view('user.pages.home', compact('slider', 'article', 'articles', 'about', 'paper', 'picks'));
+        $volume = Volume::latest('id')->first();
+        $designation = Designation::where('designation', 'editor in chief')->first();
+        $editorInCharge = Editor::where('designation_id', $designation->id)->first();
+        return view('user.pages.home', compact('slider', 'article', 'articles', 'about', 'paper', 'picks', 'volume', 'editorInCharge'));
     }
+
+    // public function loveme(Request $request)
+    // {
+    //     dd($request->ip());
+    // }
 }

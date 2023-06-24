@@ -46,10 +46,6 @@
                             class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span><span
                             class="nk-menu-text">Manuscript</span></a>
                     <ul class="nk-menu-sub">
-                        <li class="nk-menu-item"><a href="{{ route('admin.create.manuscript') }}"
-                                class="nk-menu-link"><span class="nk-menu-text">Manuscript
-                                </span></a>
-                        </li>
                         <li class="nk-menu-item"><a href="{{ route('admin.show.manuscript') }}"
                                 class="nk-menu-link"><span class="nk-menu-text">Received Manuscript
                                 </span></a>
@@ -79,8 +75,8 @@
                             class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span><span
                             class="nk-menu-text">Editor(s) and Designations</span></a>
                     <ul class="nk-menu-sub">
-                        <li class="nk-menu-item"><a href="{{ route('admin.designation') }}"
-                                class="nk-menu-link"><span class="nk-menu-text">Designations</span></a></li>
+                        <li class="nk-menu-item"><a href="{{ route('admin.designation') }}" class="nk-menu-link"><span
+                                    class="nk-menu-text">Designations</span></a></li>
                         <li class="nk-menu-item"><a href="{{ route('admin.editor') }}" class="nk-menu-link"><span
                                     class="nk-menu-text">Editor</span></a></li>
                     </ul>

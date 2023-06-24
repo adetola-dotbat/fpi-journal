@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\{AboutController, VolumeController, SliderController, ProfileController, AdminController, ManuscriptController, HomeController, ArticleController, ArticleTemplateController, DesignationController, EditorController, GuidelineController, PaperCallController};
-use App\Http\Livewire\EditorsPick;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,18 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::group(['middleware' => ['guest']], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/about', [AboutController::class, 'index'])->name('about');
-    Route::get('/call-for-paper', [PaperCallController::class, 'index'])->name('paper');
-    Route::get('/article-template', [ArticleTemplateController::class, 'index'])->name('article.template');
-    Route::get('/guideline', [GuidelineController::class, 'index'])->name('guideline');
-    Route::get('/editor-board', [EditorController::class, 'index'])->name('editor');
-    Route::get('/like/{item}', [ArticleController::class, 'like'])->name('like');
-});
+
+
+
+// Route::get('/loveme', [HomeController::class, 'loveme'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/call-for-paper', [PaperCallController::class, 'index'])->name('paper');
+Route::get('/article-template', [ArticleTemplateController::class, 'index'])->name('article.template');
+Route::get('/guideline', [GuidelineController::class, 'index'])->name('guideline');
+Route::get('/editor-board', [EditorController::class, 'index'])->name('editor');
+Route::get('/like/{item}', [ArticleController::class, 'like'])->name('like');
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -74,7 +73,10 @@ Route::group(['middleware' => ['auth']], function () {
             Route::prefix('volume')->group(function () {
                 Route::get('/', [VolumeController::class, 'volume'])->name('admin.volume');
                 Route::post('/store', [VolumeController::class, 'store'])->name('admin.store.volume');
-                Route::get('/delete/{volume}', [VolumeController::class, 'delete'])->name('admin.delete.volume');
+                Route::post('/update/image/{volume}', [VolumeController::class, 'updateImage'])->name('admin.update.volume.image');
+                Route::post('/update/{volume}', [VolumeController::class, 'update'])->name('admin.update.volume');
+                Route::get('/edit/{volume}', [VolumeController::class, 'edit'])->name('admin.edit.volume');
+                Route::get('/status/{volume}', [VolumeController::class, 'status'])->name('admin.status.volume');
             });
 
             Route::prefix('article-template')->group(function () {
