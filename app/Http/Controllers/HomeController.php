@@ -23,9 +23,10 @@ class HomeController extends Controller
         $picks = Article::where('popularity', '>=', '1')->limit(4)->get();
         $paper = Paper::first();
         $volume = Volume::latest('id')->first();
+        $volumes = Volume::latest('id')->get();
         $designation = Designation::where('designation', 'editor in chief')->first();
         $editorInCharge = Editor::where('designation_id', $designation->id)->first();
-        return view('user.pages.home', compact('slider', 'article', 'articles', 'about', 'paper', 'picks', 'volume', 'editorInCharge'));
+        return view('user.pages.home', compact('slider', 'article', 'articles', 'about', 'paper', 'picks', 'volume', 'volumes', 'editorInCharge'));
     }
 
     // public function loveme(Request $request)

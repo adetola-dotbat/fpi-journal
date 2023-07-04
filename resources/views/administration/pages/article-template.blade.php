@@ -35,17 +35,15 @@
                                     <div class="form-group">
                                         <label class="form-label">Article Template</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message">{{ $articleTemplate->description }}</textarea>
+                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message" required>{{ $articleTemplate->description }}</textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
 

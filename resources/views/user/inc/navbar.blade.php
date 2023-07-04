@@ -72,21 +72,10 @@
                         <li>
                             <a href="{{ route('guideline') }}" class="sub-menu-item">Guidelines</a>
                         </li>
-                        <li><a href="" class="sub-menu-item">Widget</a></li>
+
                     </ul>
                 </li>
-                <li class="has-submenu parent-menu-item">
-                    <a href="javascript:void(0)">Articles</a><span class="menu-arrow"></span>
-                    <ul class="submenu">
-                        <li>
-                            <a href="" class="sub-menu-item">Template</a>
-                        </li>
-                        <li>
-                            <a href="" class="sub-menu-item">Guidelines</a>
-                        </li>
-                        <li><a href="" class="sub-menu-item">Widget</a></li>
-                    </ul>
-                </li>
+                <li><a href="{{ route('articles') }}" class="sub-menu-item">Articles</a></li>
 
                 <li><a href="{{ route('editor') }}" class="sub-menu-item">Editorial Board</a></li>
                 <li>

@@ -35,28 +35,21 @@
                                                 <td>#</td>
                                                 <td>Title</td>
                                                 <td>Authors</td>
-                                                <td>File</td>
-                                                <td>Status</td>
                                                 <td>Action</td>
                                             </tr>
                                         </thead>
-
+                                        @php
+                                            use Illuminate\Support\Str;
+                                        @endphp
                                         <tbody>
                                             @forelse ($manuscripts as $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->title }}</td>
-                                                    <td>{{ $item->authors }}</td>
-                                                    <td> <a href="{{ asset('storage/manuscript/' . $item->file) }}"
-                                                            target="__blank">View Manuscript</a>
-
-
-                                                    </td>
-                                                    <td>{{ $item->publish_status }}</td>
-
+                                                    <td>{{ Str::title($item->title) }}</td>
+                                                    <td>{{ Str::title($item->authors) }}</td>
                                                     <td>
                                                         <div class="dropdown"><a href="#"
-                                                                class="btn btn-sm btn-primary" data-bs-toggle="dropdown"
+                                                                class="btn btn-sm btn-secondary" data-bs-toggle="dropdown"
                                                                 aria-expanded="false"><span>Action
                                                                 </span><em class="icon ni ni-chevron-down"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-auto mt-1"
@@ -66,7 +59,8 @@
                                                                             href="{{ route('admin.details.manuscript', $item->id) }}">View</a>
                                                                     </li>
                                                                     <li><a
-                                                                            href="{{ route('admin.edit.manuscript', $item->id) }}">Edit</a>
+                                                                            href="{{ route('admin.edit.manuscript', $item->id) }}">Edit
+                                                                            as article</a>
                                                                     </li>
                                                                     <li><a
                                                                             href="{{ route('admin.delete.manuscript', $item->id) }}">Delete</a>

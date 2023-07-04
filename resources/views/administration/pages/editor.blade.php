@@ -32,22 +32,23 @@
                                     <div class="form-group">
                                         <label class="form-label">Editor
                                             Image</label>
-                                        <input type="file" name="image" class="form-file-input dropify">
+                                        <input type="file" name="image" class="form-file-input dropify" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Full Name</label>
-                                        <input type="text" placeholder="Full Name" name="name" class="form-control">
+                                        <input type="text" placeholder="Full Name" name="name"
+                                            class="form-btn-secondary" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Institution</label>
                                         <input type="text" placeholder="Institution" name="institution"
-                                            class="form-control">
+                                            class="form-btn-secondary" required>
                                     </div>
                                     <div class="form-group"><label class="form-label">Designation</label>
-                                        <div class="form-control-wrap">
-                                            <select class="form-select js-select2 select2-hidden-accessible"
+                                        <div class="form-btn-secondary-wrap">
+                                            <select class="form-select js-select2 select2-hidden-accessible" required
                                                 data-select2-id="3" aria-hidden="true" name="designation_id">
                                                 <option value="default_option" data-select2-id="5">Select Designation
                                                 </option>
@@ -59,7 +60,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn  btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>
@@ -94,7 +95,7 @@
                                                             src="{{ asset('/storage/editors/' . $item->image) }}">
                                                     </td>
                                                     <td>
-                                                        <div class="dropdown"><a href="#" class="btn btn-primary"
+                                                        <div class="dropdown"><a href="#" class="btn btn-secondary"
                                                                 data-bs-toggle="dropdown" aria-expanded="false"><span>Action
                                                                 </span><em class="icon ni ni-chevron-down"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-auto mt-1"

@@ -31,9 +31,9 @@
                                     <div class="form-group">
                                         <label class="form-label">Designation</label>
                                         <input type="text" value="{{ $designation->designation }}" name="designation"
-                                            class="form-control">
+                                            class="form-control" required>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>
@@ -61,7 +61,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->designation }}</td>
                                                     <td>
-                                                        <div class="dropdown"><a href="#" class="btn btn-primary"
+                                                        <div class="dropdown"><a href="#" class="btn btn-secondary"
                                                                 data-bs-toggle="dropdown" aria-expanded="false"><span>Action
                                                                 </span><em class="icon ni ni-chevron-down"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-auto "

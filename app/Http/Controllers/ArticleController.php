@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ManuscriptStatus;
 use App\Enums\PublishStatus;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Models\ArticleLike;
+use App\Models\Manuscript;
 use App\Models\Volume;
 use App\Traits\FileTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+
+use function PHPSTORM_META\type;
 
 class ArticleController extends Controller
 {
@@ -22,6 +29,13 @@ class ArticleController extends Controller
     {
         $articles =  $this->article->orderBy('id', 'desc')->get();
         return view('administration.pages.article', compact('articles'));
+    }
+
+    public function articles()
+    {
+        $volumes = Volume::get();
+        $articles =  $this->article->get();
+        return view('user.pages.articles', compact('volumes', 'articles'));
     }
 
     public function showArticle()
@@ -76,11 +90,30 @@ class ArticleController extends Controller
         return redirect()->back();
     }
 
-    public function like($item)
+    public function like($articleId)
     {
-        $article = $this->article->find($item);
-        ++$article->popularity;
-        $article->save();
+        DB::transaction(function () use ($articleId) {
+            $article = $this->article->find($articleId);
+            if (!Session::get('guest_user')) {
+                Session::put('guest_user', uniqid());
+            }
+            $userSession = Session::get('guest_user');
+
+            $articleLike = ArticleLike::where('article_id', $articleId)->where('quest_user', $userSession)->first();
+
+            if (!$articleLike) {
+                Session::put('guest_user', uniqid());
+                $userSession = Session::get('guest_user');
+                ArticleLike::create(
+                    [
+                        'quest_user' => $userSession,
+                        'article_id' => $articleId
+                    ]
+                );
+                $article->popularity += 1;
+                $article->save();
+            }
+        });
         return redirect()->back();
     }
 
@@ -99,10 +132,21 @@ class ArticleController extends Controller
         return redirect()->back();
     }
 
+    public function saveArticle(StoreArticleRequest $request, $article)
+    {
+        DB::transaction(function () use ($request, $article) {
+            $manuscript = Manuscript::find($article);
+            $manuscript->status = ManuscriptStatus::INACTIVE;
+            $manuscript->save();
+
+            $this->store($request);
+        });
+        return redirect()->back();
+    }
+
 
     public function adminCreateArticle()
     {
-        // admin to create final article
         return view('administration.pages.article', compact('article'));
     }
 

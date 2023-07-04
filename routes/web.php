@@ -14,17 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-
-// Route::get('/loveme', [HomeController::class, 'loveme'])->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/call-for-paper', [PaperCallController::class, 'index'])->name('paper');
 Route::get('/article-template', [ArticleTemplateController::class, 'index'])->name('article.template');
 Route::get('/guideline', [GuidelineController::class, 'index'])->name('guideline');
 Route::get('/editor-board', [EditorController::class, 'index'])->name('editor');
-Route::get('/like/{item}', [ArticleController::class, 'like'])->name('like');
+Route::get('articles', [ArticleController::class, 'articles'])->name('articles');
+Route::get('/like/{like}', [ArticleController::class, 'like'])->name('like');
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -110,6 +107,7 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::post('/update/file/{article}', [ArticleController::class, 'updateFile'])->name('admin.update.article.file');
                 Route::post('/update/{article}', [ArticleController::class, 'update'])->name('admin.update.article');
                 Route::get('/delete/{article}', [ArticleController::class, 'delete'])->name('admin.delete.article');
+                Route::post('/s-as-article/{article}', [ArticleController::class, 'saveArticle'])->name('admin.save.as.article');
             });
 
             Route::prefix('manuscript')->group(function () {

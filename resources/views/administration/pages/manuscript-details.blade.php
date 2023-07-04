@@ -25,44 +25,31 @@
             <div class="nk-block">
                 <div class="card card-bordered">
                     <div class="card-inner">
-                        <h4 class="title text-soft mb-4 overline-title">Article On - I must pass the volume title here</h4>
-                        <table class="email-wraper">
+                        @php
+                            use Illuminate\Support\Str;
+                        @endphp
+                        <table class="">
                             <tbody>
                                 <tr>
-                                    <td class="py-5">
+                                    <td class="py-2">
                                         <table class="email-body">
                                             <tbody>
                                                 <tr>
-                                                    <td class="px-3 px-sm-5 pt-3 pt-sm-5 pb-3">
-                                                        <h2 class="email-heading">Title: {{ $manuscript->title }}</h2>
+                                                    <td class=" px-5 pt-3 pt-sm-5 pb-3">
+                                                        <h2 class="">Title: {{ Str::title($manuscript->title) }}</h2>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="px-3 px-sm-5 pb-2">
-                                                        <p>From: {{ $manuscript->authors }}</p>
+                                                        <p>From: {{ Str::title($manuscript->authors) }}</p>
                                                         <h3>Abstract</h3>
                                                         <p>{{ $manuscript->abstract }}</p>
 
                                                         <div class="d-inline-flex">
-
-                                                            <form
-                                                                action="{{ route('admin.publish.manuscript', $manuscript->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('post')
-                                                                <button class="email-btn" style="border: 0px"
-                                                                    type="submit">
-                                                                    @if ($manuscript->publish_status == 'pending')
-                                                                        Publish
-                                                                    @else
-                                                                        Unpublish
-                                                                    @endif
-
-                                                                </button>
-                                                            </form>
-
                                                             <a href="{{ route('admin.edit.manuscript', $manuscript->id) }}"
-                                                                class="email-btn mx-3">Edit</a>
+                                                                class="btn btn-secondary">Edit as Article</a>
+                                                            <a href="{{ asset('storage/manuscript/' . $manuscript->file) }}"
+                                                                target="_blank" class="btn btn-secondary mx-3">View file</a>
                                                         </div>
 
                                                     </td>

@@ -38,7 +38,7 @@
                                                     required>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-lg btn-primary">Change
+                                                <button type="submit" class="btn  btn-secondary">Change
                                                     Image
                                                 </button>
                                             </div>
@@ -60,18 +60,18 @@
                                     <div class="form-group">
                                         <label class="form-label">Full Name</label>
                                         <input type="text" value="{{ $editor->name }}" name="name"
-                                            class="form-control">
+                                            class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Institution</label>
                                         <input type="text" value="{{ $editor->institution }}" name="institution"
-                                            class="form-control">
+                                            class="form-control" required>
                                     </div>
                                     <div class="form-group"><label class="form-label">Designation</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select js-select2 select2-hidden-accessible"
-                                                data-select2-id="3" aria-hidden="true" name="designation_id">
+                                                data-select2-id="3" aria-hidden="true" name="designation_id" required>
                                                 <option value="default_option" data-select2-id="5">Select Designation
                                                 </option>
                                                 @foreach ($designations as $item)
@@ -83,7 +83,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn  btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>
@@ -118,7 +118,7 @@
                                                             src="{{ asset('/storage/editors/' . $item->image) }}">
                                                     </td>
                                                     <td>
-                                                        <div class="dropdown"><a href="#" class="btn btn-primary"
+                                                        <div class="dropdown"><a href="#" class="btn btn-secondary"
                                                                 data-bs-toggle="dropdown" aria-expanded="false"><span>Action
                                                                 </span><em class="icon ni ni-chevron-down"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-auto mt-1"

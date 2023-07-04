@@ -46,13 +46,13 @@
                                             placeholder="Title">
                                     </div>
                                 </div>
-                                <div class="lg:col-span-6">
+                                {{-- <div class="lg:col-span-6">
                                     <div class="ltr:text-left rtl:text-right">
                                         <label for="page_no" class="font-semibold">Page No.:</label>
                                         <input name="page_no" id="page_no" type="text" class="form-input mt-3"
                                             placeholder="Page number">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="lg:col-span-6">
                                     <div class="ltr:text-left rtl:text-right">
                                         <label for="authors" class="font-semibold">Authors:</label>
@@ -60,7 +60,7 @@
                                             placeholder="Authors">
                                     </div>
                                 </div>
-                                <div class="lg:col-span-6">
+                                <div class="lg:col-span-12">
                                     <label class="font-semibold" for="file">Upload file:</label>
                                     <input class="form-input mt-3" id="resumefile" name="file" type="file">
                                 </div>

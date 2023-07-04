@@ -37,7 +37,7 @@
                                                     required>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-lg btn-primary">Change
+                                                <button type="submit" class="btn btn-secondary">Change
                                                     Logo
                                                 </button>
                                             </div>
@@ -59,19 +59,19 @@
                                     <div class="form-group">
                                         <label class="form-label">Organization Name</label>
                                         <input type="text" value="{{ $about->name ?? 'none' }}" name="name"
-                                            class="form-control">
+                                            class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Location</label>
                                         <input type="text" value="{{ $about->location ?? 'none' }}" name="location"
-                                            class="form-control">
+                                            class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Description</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="description">{{ $about->description ?? 'none' }}</textarea>
+                                            <textarea class="form-control form-control-sm" name="description" required>{{ $about->description ?? 'none' }}</textarea>
                                         </div>
                                     </div>
 
@@ -79,10 +79,10 @@
                                     <div class="form-group">
                                         <label class="form-label">Message</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="welcome_message" placeholder="Write your message">{{ $about->welcome_message ?? 'none' }}</textarea>
+                                            <textarea class="form-control form-control-sm" name="welcome_message" placeholder="Write your message" required>{{ $about->welcome_message ?? 'none' }}</textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>

@@ -35,10 +35,10 @@
                                     <div class="form-group">
                                         <label class="form-label">Guideline</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="guideline" placeholder="Write your message">{{ $guideline->guideline ?? 'none' }}</textarea>
+                                            <textarea class="form-control form-control-sm" name="guideline" placeholder="Write your message" required>{{ $guideline->guideline ?? 'none' }}</textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>

@@ -1,6 +1,6 @@
 @extends('administration.layout.master', [($bodyClass = 'nk-body bg-lighter npc-default has-sidebar')])
 @section('pageName')
-    Edit Manuscript
+    Edit as Article
 @endsection
 @push('style')
     <link rel="stylesheet" href="{{ asset('administration/assets2/bundles/plugins/dropify/css/dropify.css') }}">
@@ -11,64 +11,58 @@
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-
-    <link rel="stylesheet" href="{{ asset('administration/assets/css/style-email.css') }} ">
 @endpush
 @section('content')
     <div class="nk-content-body">
         <div class="components-preview wide-md mx-auto">
             <div class="nk-block-head nk-block-head-lg wide-sm">
                 <div class="nk-block-head-content">
-                    <h2 class="nk-block-title fw-normal">Edit Manuscript</h2>
+                    <h2 class="nk-block-title fw-normal">Edit as Article</h2>
                 </div>
             </div>
-            <div class="nk-block">
-                <div class="card card-bordered">
-                    <div class="card-inner">
-                        <h4 class="title text-soft mb-4 overline-title">Article On - I must pass the volume title here</h4>
-                        <table class="email-wraper">
-                            <tbody>
-                                <tr>
-                                    <td class="py-5">
-                                        <table class="email-body">
-                                            <tbody>
-                                                <form action="{{ route('admin.update.manuscript', $manuscript->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('post')
+            <div class="nk-block nk-block-lg">
+                <div class="row g-gs">
+                    <div class="col-lg-12">
+                        <div class="card card-bordered h-100">
+                            <div class="card-inner">
 
-                                                    <tr>
-                                                        <td class="px-3 px-sm-5 pt-3 pt-sm-5 pb-3">
-                                                            <h2 class="email-heading">Title: {{ $manuscript->title }}</h2>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="px-3 px-sm-5 pb-2">
-                                                            <p>From: <input type="text" name="authors"
-                                                                    value="{{ $manuscript->authors }}" class="form-control">
-                                                            </p>
-                                                            <h3>Abstract</h3>
-                                                            <textarea name="abstract"class="form-control form-control-sm"> {{ $manuscript->abstract }}</textarea>
+                                <form action="{{ route('admin.save.as.article', $manuscript->id) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label class="form-label">Manuscript file</label>
+                                        <input type="file" name="file" class="form-file-input dropify " required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Title</label>
+                                        <input type="text" placeholder="Title" name="title"
+                                            value="{{ $manuscript->title }}" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Page(s)</label>
+                                        <input type="text" placeholder="Page number" name="pages"
+                                            value="{{ $manuscript->page_no }}" class="form-control" required>
+                                    </div>
 
-                                                            <div class=" pt-5">
+                                    <div class="form-group">
+                                        <label class="form-label">Author(s)</label>
+                                        <input type="text" placeholder="Author" name="author"
+                                            value="{{ $manuscript->authors }}" class="form-control" required>
+                                    </div>
 
-                                                                <button class="email-btn" style="border: 0px"
-                                                                    type="submit"> Update </button>
-                                                                {{-- <a href="{{ route('admin.update.manuscript', $manuscript->id) }}"
-                                                                        class="email-btn ">Update</a> --}}
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
-                                                </form>
-                                            </tbody>
-                                        </table>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    <div class="form-group">
+                                        <label class="form-label">Abstract</label>
+                                        <div class="form-control-wrap">
+                                            <textarea class="form-control form-control-sm" name="abstract" placeholder="Write your message" required>{{ $manuscript->abstract }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><button type="submit" class="btn btn-secondary">Save
+                                        </button></div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
 

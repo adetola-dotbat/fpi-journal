@@ -38,7 +38,7 @@
                                                     required>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-lg btn-primary">Change
+                                                <button type="submit" class="btn   btn-secondary">Change
                                                     Slider Image
                                                 </button>
                                             </div>
@@ -58,17 +58,16 @@
                                     <div class="form-group">
                                         <label class="form-label">Title</label>
                                         <input type="text" placeholder="Title" value="{{ $slider->title }}"
-                                            name="title" class="form-control">
-                                    </div>
+                                            name="title" class="form-control" required </div>
 
-                                    <div class="form-group">
-                                        <label class="form-label">Description</label>
-                                        <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message">{{ $slider->description }}</textarea>
+                                        <div class="form-group">
+                                            <label class="form-label">Description</label>
+                                            <div class="form-control-wrap">
+                                                <textarea class="form-control form-control-sm" name="description" placeholder="Write your message" required>{{ $slider->description }}</textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
-                                        </button></div>
+                                        <div class="form-group"><button type="submit" class="btn btn-lg btn-secondary">Save
+                                            </button></div>
                                 </form>
                             </div>
                         </div>
@@ -101,7 +100,7 @@
                                                             src="{{ asset('/storage/slider/' . $slider->image) }}">
                                                     </td>
                                                     <td>
-                                                        <div class="dropdown"><a href="#" class="btn btn-primary"
+                                                        <div class="dropdown"><a href="#" class="btn btn-secondary"
                                                                 data-bs-toggle="dropdown" aria-expanded="false"><span>Action
                                                                 </span><em class="icon ni ni-chevron-down"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-auto mt-1"

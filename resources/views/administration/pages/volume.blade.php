@@ -37,21 +37,22 @@
                                     <div class="form-group">
                                         <label class="form-label">Volume
                                             Image</label>
-                                        <input type="file" name="image" class="form-file-input dropify">
+                                        <input type="file" name="image" class="form-file-input dropify" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Title</label>
-                                        <input type="text" placeholder="Title" name="title" class="form-control">
+                                        <input type="text" placeholder="Title" name="title" class="form-control"
+                                            required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label">Description</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message"></textarea>
+                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message" required></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn  btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>
@@ -85,7 +86,7 @@
                                                             src="{{ asset('/storage/volume/' . $item->image) }}">
                                                     </td>
                                                     <td>
-                                                        <div class="dropdown"><a href="#" class="btn btn-primary"
+                                                        <div class="dropdown"><a href="#" class="btn btn-secondary"
                                                                 data-bs-toggle="dropdown" aria-expanded="false"><span>Action
                                                                 </span><em class="icon ni ni-chevron-down"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-auto mt-1"
@@ -96,7 +97,7 @@
                                                                             @if ($item->status == 'pending')
                                                                                 Activate
                                                                             @else
-                                                                                Deactive
+                                                                                Inactive
                                                                             @endif
                                                                         </a>
                                                                     </li>
