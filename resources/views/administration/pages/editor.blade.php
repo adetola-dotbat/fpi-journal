@@ -37,17 +37,18 @@
 
                                     <div class="form-group">
                                         <label class="form-label">Full Name</label>
-                                        <input type="text" placeholder="Full Name" name="name"
-                                            class="form-btn-secondary" required>
+                                        <input type="text" placeholder="Full Name" name="name" class="form-control"
+                                            required>
                                     </div>
+
 
                                     <div class="form-group">
                                         <label class="form-label">Institution</label>
                                         <input type="text" placeholder="Institution" name="institution"
-                                            class="form-btn-secondary" required>
+                                            class="form-control" required>
                                     </div>
                                     <div class="form-group"><label class="form-label">Designation</label>
-                                        <div class="form-btn-secondary-wrap">
+                                        <div class="form-control-wrap">
                                             <select class="form-select js-select2 select2-hidden-accessible" required
                                                 data-select2-id="3" aria-hidden="true" name="designation_id">
                                                 <option value="default_option" data-select2-id="5">Select Designation
