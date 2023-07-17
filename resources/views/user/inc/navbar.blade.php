@@ -79,7 +79,7 @@
 
                 <li><a href="{{ route('editor') }}" class="sub-menu-item">Editorial Board</a></li>
                 <li>
-                    <a href="" class="sub-menu-item">Contact</a>
+                    <a href="{{ route('contact') }}" class="sub-menu-item">Contact</a>
                 </li>
             </ul>
             <!--end navigation menu-->

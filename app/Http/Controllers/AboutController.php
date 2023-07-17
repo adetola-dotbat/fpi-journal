@@ -35,7 +35,7 @@ class AboutController extends Controller
     {
         $currentAbout = $this->about->first();
         $about =  $currentAbout->update($request->validated());
-        return back()->with('Update Successful')->with('about', $about);
+        return back()->with('message', 'Update Successful')->with('about', $about);
     }
 
     public function updateAboutImage(UpdateLogoRequest $request)
@@ -46,12 +46,12 @@ class AboutController extends Controller
             Storage::delete('storage/logo/' . $about->image);
             $about->image = $fileNameToStore;
             $about->save();
-            return redirect()->back();
+            return redirect()->back()->with('message', 'Image updated Successful');
         } else {
             $fileNameToStore = $this->fileUpload('image', 'storage/logo/');
             $about->image = $fileNameToStore;
             $about->save();
-            return redirect()->back();
+            return redirect()->back()->with('message', 'Image Update Successful');
         }
     }
 }

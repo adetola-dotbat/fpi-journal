@@ -10,7 +10,7 @@ class StoreGuidelineRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'guideline' => 'required'
+            'guideline' => 'required',
         ];
     }
 }

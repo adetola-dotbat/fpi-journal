@@ -22,6 +22,10 @@
         gtag('js', new Date());
         gtag('config', 'UA-91615293-4');
     </script>
+    @if (Session::has('message'))
+        @include('toastr.toastrstyle')
+    @endif
+
 </head>
 
 <body class="{!! $bodyClass ?? '' !!}">
@@ -49,6 +53,9 @@
     <script type="text/javascript" src="{{ asset('administration/assets2/bundles/plugins/jquery/jquery-3.3.1.min.js') }}">
     </script>
     @stack('script')
+    @if (Session::has('message'))
+        @include('toastr.toastrscript')
+    @endif
 </body>
 
 </html>

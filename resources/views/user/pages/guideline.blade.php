@@ -9,6 +9,7 @@
         class="relative table w-full py-32 lg:py-36 bg-[url('../../assets/images/real/bg/01.html')] bg-no-repeat bg-center bg-cover">
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
+
             <div class="grid grid-cols-1 text-center mt-10">
                 <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white">
                     Guideline
@@ -27,6 +28,11 @@
                 <p class="text-slate-400 mb-3">
                     {!! $guideline->guideline !!}
                 </p>
+            </div>
+            <div class="mt-6">
+                <a href="{{ asset('/storage/guideline/' . $guideline->file) }}" target="_blank"
+                    class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">View
+                    Guideline</a>
             </div>
         </div>
         <!--end container-->

@@ -28,6 +28,6 @@ class ArticleTemplateController extends Controller
     {
         $articleTemplate = $this->articleTemplate->first();
         $articleTemplate->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Update Successful');
     }
 }

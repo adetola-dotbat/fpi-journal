@@ -67,7 +67,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group"><button type="submit" class="btn btn-lg btn-secondary">Save
-                                            </button></div>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -128,10 +130,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

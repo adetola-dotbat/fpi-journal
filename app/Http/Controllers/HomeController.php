@@ -29,8 +29,9 @@ class HomeController extends Controller
         return view('user.pages.home', compact('slider', 'article', 'articles', 'about', 'paper', 'picks', 'volume', 'volumes', 'editorInCharge'));
     }
 
-    // public function loveme(Request $request)
-    // {
-    //     dd($request->ip());
-    // }
+    public function contact()
+    {
+        $contact  = About::first();
+        return view('user.pages.contact', compact('contact'));
+    }
 }

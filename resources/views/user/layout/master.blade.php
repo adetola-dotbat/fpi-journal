@@ -41,13 +41,14 @@
             class="uil uil-arrow-up"></i></a>
     <!-- Back to top -->
 
-    @stack('script')
 
     <!-- JAVASCRIPTS -->
     <script src="{{ asset('user/assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('user/assets/js/plugins.init.js') }}"></script>
     <script src="{{ asset('user/assets/js/app.js') }} "></script>
     <!-- JAVASCRIPTS -->
+
+    @stack('script')
 
 </body>
 

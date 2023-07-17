@@ -60,7 +60,7 @@ class ArticleController extends Controller
                 'author' => $request->author,
                 'user_id' => auth()->user()->id
             ]);
-            return redirect()->back();
+            return redirect()->back()->with('message', 'Article added successfully');
         } else {
             abort('402');
         }
@@ -77,7 +77,7 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, $article)
     {
         $this->article->find($article)->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successfully Edited');
     }
 
     public function updateFile($article)
@@ -87,7 +87,7 @@ class ArticleController extends Controller
         Storage::delete('storage/article/' . $article->file);
         $article->file = $fileNameToStore;
         $article->save();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'File Updated Successfully');
     }
 
     public function like($articleId)
@@ -114,7 +114,7 @@ class ArticleController extends Controller
                 $article->save();
             }
         });
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Your like is added');
     }
 
     public function publish($article)
@@ -129,7 +129,7 @@ class ArticleController extends Controller
             $article->save();
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Publish status changed');
     }
 
     public function saveArticle(StoreArticleRequest $request, $article)
@@ -141,7 +141,7 @@ class ArticleController extends Controller
 
             $this->store($request);
         });
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Article saved successfully');
     }
 
 
@@ -153,6 +153,6 @@ class ArticleController extends Controller
     public function delete($article)
     {
         $this->article->find($article)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Article deleted Successfully');
     }
 }

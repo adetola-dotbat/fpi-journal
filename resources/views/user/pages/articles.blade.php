@@ -3,16 +3,14 @@
     Articles
 @endsection
 
-{{-- @push('style')
-    <link href="{{ asset('user/assets/libs/tobii/css/tobii.min.css') }}" rel="stylesheet">
-@endpush --}}
+@push('style')
+    @if (Session::has('message'))
+        @include('toastr.toastrstyle')
+    @endif
+@endpush
 
 @section('content')
     <!-- Start Hero -->
-
-    @php
-        use Illuminate\Support\Str;
-    @endphp
     <section
         class="relative table w-full py-32 lg:py-36 bg-[url('../../assets/images/real/bg/01.html')] bg-no-repeat bg-center bg-cover">
         <div class="absolute inset-0 bg-black opacity-80"></div>
@@ -100,11 +98,17 @@
 
     @push('script')
         <!-- JAVASCRIPTS -->
+        <script src="{{ asset('administration/assets2/bundles/plugins/jquery/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('user/assets/libs/shufflejs/shuffle.min.js') }}"></script>
         <script src="{{ asset('user/assets/libs/tobii/js/tobii.min.js') }}"></script>
         <script src="{{ asset('user/assets/libs/feather-icons/feather.min.js') }}"></script>
         <script src="{{ asset('user/assets/js/plugins.init.js') }}"></script>
         <script src="{{ asset('user/assets/js/app.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        @if (Session::has('message'))
+            @include('toastr.toastrscript')
+        @endif
         <!-- JAVASCRIPTS -->
     @endpush
 @endsection

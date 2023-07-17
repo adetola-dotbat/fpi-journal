@@ -21,6 +21,7 @@ Route::get('/article-template', [ArticleTemplateController::class, 'index'])->na
 Route::get('/guideline', [GuidelineController::class, 'index'])->name('guideline');
 Route::get('/editor-board', [EditorController::class, 'index'])->name('editor');
 Route::get('articles', [ArticleController::class, 'articles'])->name('articles');
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/like/{like}', [ArticleController::class, 'like'])->name('like');
 
 
@@ -64,7 +65,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::prefix('guideline')->group(function () {
                 Route::get('/', [GuidelineController::class, 'create'])->name('admin.guideline');
                 Route::post('/update', [GuidelineController::class, 'update'])->name('admin.update.guideline');
+                Route::post('/update/guideline/file', [GuidelineController::class, 'updateFile'])->name('admin.update.guideline.file');
             });
+
 
 
             Route::prefix('volume')->group(function () {

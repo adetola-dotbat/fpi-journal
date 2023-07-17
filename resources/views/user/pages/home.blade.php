@@ -15,7 +15,7 @@
             <div class="swiper-wrapper">
                 @foreach ($slider as $item)
                     <div class="swiper-slide flex items-center overflow-hidden">
-                        <div class="slide-inner slide-bg-image flex items-center bg-center;"
+                        <div class="slide-inner slide-bg-image flex items-center bg-cover bg-no-repeat;"
                             data-background="{{ asset('storage/slider/' . $item->image) }}">
                             <div class="absolute inset-0 bg-black/70"></div>
                             <div class="container">
@@ -183,6 +183,9 @@
                                         <a href="{{ asset('storage/article/' . $pick->file) }}"
                                             class="text-white/70 hover:text-white text-lg block font-semibold duration-500 ease-in-out">{{ Str::title($pick->title) }}</a>
                                         <span class="text-white/60 block">{{ Str::title($pick->author) }}</span>
+                                        <span class="block font-semibold text-white"> {{ $pick->popularity }} <i
+                                                class="mdi mdi-heart text-red-600 "></i>
+                                            likes</span>
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +200,7 @@
     </section>
 
     <section class="mb-8">
-        <div class="container md:mt-8">
+        <div class="container md:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Volumes</h3>
             </div>

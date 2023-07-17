@@ -2712,7 +2712,7 @@ video {
   --tw-gradient-to-position:   !important;
 }
 .bg-cover{
-  background-size: cover !important;
+  background-size:cover !important;
 }
 .bg-fixed{
   background-attachment: fixed !important;
@@ -5596,7 +5596,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-:is(.dark .tns-controls button[data-controls=prev]),:is(.dark 
+:is(.dark .tns-controls button[data-controls=prev]),:is(.dark
 .tns-controls button[data-controls=next]){
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity));
@@ -5776,7 +5776,7 @@ html[dir=rtl] .tns-visually-hidden {
           box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-:is(.dark .choices__list--dropdown),:is(.dark 
+:is(.dark .choices__list--dropdown),:is(.dark
 .choices[data-type*=select-one] .choices__input){
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity));
