@@ -41,7 +41,7 @@ class EditorController extends Controller
             'image' => $fileNameToStore,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Editor added successfully');
     }
 
     public function edit($editor)
@@ -59,14 +59,13 @@ class EditorController extends Controller
         Storage::delete('storage/editor/' . $editor->image);
         $editor->image = $fileNameToStore;
         $editor->save();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Image changed successfully');
     }
 
     public function update(UpdateEditorRequest $request, $editor)
     {
-
         $this->editor->find($editor)->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 
     public function delete($editor)

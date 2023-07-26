@@ -5,8 +5,7 @@
 
 @section('content')
     <!-- Start Hero -->
-    <section
-        class="md:h-screen flex py-36 w-full items-center bg-[url('../../assets/images/cta.html')] bg-center bg-no-repeat bg-cover">
+    <section class="md:h-screen flex py-36 w-full items-center  bg-center bg-no-repeat bg-cover">
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="container">
             <div class="lg:flex justify-center mt-12">
@@ -15,9 +14,9 @@
                         <div class="lg:col-span-7 md:col-span-6">
                             <div class="w-full leading-[0] border-0">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin"
-                                    style="border:0" class="w-full lg:h-[540px] md:h-[600px] h-[200px]"
-                                    allowfullscreen></iframe>
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.923298877267!2d2.9829141970341806!3d6.892896700610783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b0f39af9ffa69%3A0xafda89b113521487!2sFederal%20Polytechnic%2C%20Ilaro!5e0!3m2!1sen!2sng!4v1689674730922!5m2!1sen!2sng"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
 
@@ -45,11 +44,11 @@
                                 </div>
 
                                 <div class="flex items-center mt-6">
-                                    <i data-feather="map-pin" class="w-6 h-6 me-4"></i>
+
                                     <div class="">
                                         <h5 class="title font-bold mb-0">Location</h5>
-                                        <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin"
-                                            data-type="iframe"
+
+                                        <a
                                             class="video-play-icon btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 transition duration-500 lightbox">{{ $contact->location }}</a>
                                     </div>
                                 </div>
@@ -64,6 +63,10 @@
         </div>
         <!--end container-->
     </section>
+
+    @push('script')
+        <script src="{{ asset('assets/libs/tobii/js/tobii.min.js') }}"></script>
+    @endpush
     <!--end section-->
     <!-- End Hero -->
 @endsection

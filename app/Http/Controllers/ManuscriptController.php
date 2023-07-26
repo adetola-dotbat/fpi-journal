@@ -34,7 +34,7 @@ class ManuscriptController extends Controller
                 'user_id' => auth()->user()->id,
             ]
         );
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 
     public function show()
@@ -53,8 +53,6 @@ class ManuscriptController extends Controller
     {
         return view('administration.pages.manuscript');
     }
-
-
     public function edit($manuscript)
     {
         $manuscript = $this->manuscript->find($manuscript);
@@ -64,6 +62,6 @@ class ManuscriptController extends Controller
     public function delete($manuscript)
     {
         $this->manuscript->find($manuscript)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 }

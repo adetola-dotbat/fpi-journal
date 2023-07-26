@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('location');
             $table->string('email');
             $table->string('phone');
-            $table->string('description');
+            $table->text('description');
             $table->string('image');
-            $table->string('welcome_message');
+            $table->text('welcome_message');
             $table->timestamps();
         });
     }

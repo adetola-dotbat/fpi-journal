@@ -27,7 +27,7 @@ class PaperCallController extends Controller
     {
         $paper = $this->paper->first();
         $paper->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
     public function updatePaper(UpdateCallForPaperRequest $request)
     {

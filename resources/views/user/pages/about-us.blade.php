@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- Start Hero -->
-    <section
+    <section style="background-image: url({{ asset('storage/book-reader-01.avif') }})"
         class="relative table w-full py-72 bg-[url('../../assets/images/job/job.html')] bg-no-repeat bg-center bg-cover">
         <div class="absolute inset-0 bg-black opacity-80"></div>
     </section>

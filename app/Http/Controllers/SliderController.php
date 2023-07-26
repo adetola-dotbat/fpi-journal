@@ -36,7 +36,7 @@ class SliderController extends Controller
                 'description' => $request->description,
                 'image' => $fileNameToStore,
             ]);
-            return redirect()->back();
+            return redirect()->back()->with('message', 'Successful');
         } else {
             abort('402');
         }
@@ -44,7 +44,8 @@ class SliderController extends Controller
 
     public function edit($data)
     {
-        $slider = $this->slider->find($data)->first();
+        $slider = $this->slider->find($data);
+        dd($slider);
         $sliders = $this->slider->get();
         return view('administration.pages.edit-slider', compact('slider', 'sliders'));
     }
@@ -52,7 +53,7 @@ class SliderController extends Controller
     public function update(UpdateSliderRequest $request, $slider)
     {
         $slider = $this->slider->find($slider)->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 
     public function updateSliderImage(UpdateSliderImageRequest $request, $slider)
@@ -62,7 +63,7 @@ class SliderController extends Controller
         Storage::delete('storage/slider/' . $slider->image);
         $slider->image = $fileNameToStore;
         $slider->save();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 
     public function delete($data)
@@ -70,6 +71,6 @@ class SliderController extends Controller
         $slider = $this->slider->find($data);
         Storage::delete('storage/slider/' . $slider->image);
         $slider->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 }

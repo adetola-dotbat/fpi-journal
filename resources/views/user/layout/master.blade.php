@@ -25,6 +25,13 @@
     <link rel="stylesheet" href="{{ asset('user/assets/css/icons.css') }}" />
     <link rel="stylesheet" href="{{ asset('user/assets/css/tailwind.css') }} " />
     @stack('style')
+
+    @if (Session::has('message'))
+        @include('toastr.toastrstyle')
+    @endif
+    <!-- Google Tag Manager -->
+
+
 </head>
 
 <body class="font-nunito text-base text-black">
@@ -49,6 +56,13 @@
     <!-- JAVASCRIPTS -->
 
     @stack('script')
+    <script type="text/javascript" src="{{ asset('administration/assets2/bundles/plugins/jquery/jquery-3.3.1.min.js') }}">
+    </script>
+    @if (Session::has('message'))
+        @include('toastr.toastrscript')
+    @endif
+
+    </div>
 
 </body>
 

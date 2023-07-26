@@ -231,22 +231,7 @@
                                 class="text-lg font-semibold hover:text-indigo-600 duration-500 ease-in-out">
                                 {{ Str::title($item->title) }}</a>
 
-                            <div class="flex items-center justify-between mt-2">
-                                <div class="flex items-center">
-                                    @php
-                                        $count = 0;
-                                        foreach ($item->articles as $article) {
-                                            $popularity = (int) $article->popularity;
-                                            echo $count += $popularity;
-                                            // echo $article->sum('popularity');
-                                        }
-                                    @endphp
-                                    <span class="block font-semibold text-indigo-600"> <i
-                                            class="mdi mdi-heart text-red-600 "></i>
-                                        likes</span>
-                                </div>
 
-                            </div>
                         </div>
                     </div>
                 @endforeach

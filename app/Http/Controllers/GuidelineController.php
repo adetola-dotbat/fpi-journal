@@ -32,7 +32,7 @@ class GuidelineController extends Controller
     {
         $guideline = $this->guideline->first();
         $guideline->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Updated successfully');
     }
 
     public function updateFile(UpdateGuidelineRequest $request)
