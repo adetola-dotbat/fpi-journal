@@ -7,7 +7,7 @@
     <!-- Start Hero -->
     <section class="md:h-screen flex py-36 w-full items-center  bg-center bg-no-repeat bg-cover">
         <div class="absolute inset-0 bg-black/70"></div>
-        <div class="container">
+        <div class="container z-10">
             <div class="lg:flex justify-center mt-12">
                 <div class="lg:w-11/12 bg-white dark:bg-slate-900 rounded-md shadow-lg dark:shadow-gray-800 overflow-hidden">
                     <div class="grid md:grid-cols-12 grid-cols-1 items-center">

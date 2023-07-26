@@ -8,7 +8,7 @@
                         <script>
                             document.write(new Date().getFullYear());
                         </script>
-                        Humanities Journal with
+                        Ilaro Journal of Humanities and Management (IJHM) with
                         <i class="mdi mdi-heart text-red-600"></i>
                         <a href="https://www.federalpolyilaro.edu.ng/" target="_blank" class="text-reset">The Federal
                             Polytechnic,
