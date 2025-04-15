@@ -12,11 +12,11 @@
 @section('content')
     <!-- Start Hero -->
     <section style="background-image: url({{ asset('storage/article-bg-image-03.jpg') }})"
-        class="relative table w-full py-32 lg:py-36 bg-no-repeat bg-center bg-cover">
+        class="relative table w-full py-32 bg-center bg-no-repeat bg-cover lg:py-36">
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
-            <div class="grid grid-cols-1 text-center mt-10">
-                <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white z-10">
+            <div class="grid grid-cols-1 mt-10 text-center">
+                <h3 class="z-10 text-3xl font-medium leading-normal text-white md:text-4xl md:leading-normal">
                     Articles
                 </h3>
             </div>
@@ -36,17 +36,17 @@
     <!-- End Hero -->
 
     <!-- Start Section-->
-    <section class="relative md:py-24 py-16">
+    <section class="relative py-16 md:py-24">
         <div class="container">
             <div class="grid grid-cols-1 items-center gap-[30px]">
-                <div class="filters-group-wrap text-center">
+                <div class="text-center filters-group-wrap">
                     <div class="filters-group">
                         <ul class="mb-0 list-none container-filter-border-bottom filter-options">
 
-                            <li class="inline-block text-lg font-semibold mx-2 mb-3 cursor-pointer relative border-b border-transparent text-slate-400 transition duration-500 active"
+                            <li class="relative inline-block mx-2 mb-3 text-lg font-semibold transition duration-500 border-b border-transparent cursor-pointer text-slate-400 active"
                                 data-group="all">All</li>
                             @foreach ($volumes as $volume)
-                                <li class="inline-block text-lg font-semibold mx-2 mb-3 cursor-pointer relative border-b border-transparent text-slate-400 transition duration-500"
+                                <li class="relative inline-block mx-2 mb-3 text-lg font-semibold transition duration-500 border-b border-transparent cursor-pointer text-slate-400"
                                     data-group="{{ $volume->title }}">
                                     {{ $volume->title }}</li>
                             @endforeach
@@ -57,33 +57,35 @@
             </div>
             <!--grid-->
 
-            <div id="grid" class="md:flex justify-center mx-auto mt-4">
+            <div id="grid" class="justify-center mx-auto mt-4 md:flex">
                 @foreach ($articles as $article)
-                    <div class="lg:w-1/3 md:w-1/2 p-4 picture-item" data-groups='["{{ $article->volume->title }}"]'>
+                    <div class="p-4 lg:w-1/3 md:w-1/2 picture-item" data-groups='["{{ $article->volume->title }}"]'>
+                        <a href="{{ route('articles.view', $article->id) }}">
+                            <div class="relative block py-3 overflow-hidden transition-all duration-500 rounded-md group">
+                                <img src="{{ asset('storage/volume/' . $article->volume->image) }}"
+                                    style="height: 28rem; width:23rem"
+                                    class="p-5 pb-0 rounded-md shadow dark:shadow-gray-800 bg-indigo-600/5 dark:bg-indigo-600/30"
+                                    alt="">
 
-                        <div class="group relative block overflow-hidden rounded-md transition-all duration-500">
-                            <img src="{{ asset('storage/volume/' . $article->volume->image) }}"
-                                style="height: 28rem; width:23rem"
-                                class="shadow dark:shadow-gray-800 p-5 pb-0 rounded-md bg-indigo-600/5 dark:bg-indigo-600/30"
-                                alt="">
+                                <!--<div-->
+                                <!--    class="absolute z-0 transition duration-500 rounded-md inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90">-->
+                                <!--</div>-->
 
-                            <!--<div-->
-                            <!--    class="absolute inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90 transition duration-500 z-0 rounded-md">-->
-                            <!--</div>-->
-
-                                <div class="pt-4 px-3">
-                                <h5 class="mb-1 font-semibold text-lg"><a target="_blank"
-                                        class="hover:text-red-600 transition-all duration-500 ease-in-out">{{ Str::title($article->title) }}</a>
-                                </h5>
-                                <span class="text-slate-400"> {{ Str::title($article->author) }}</span>
-                                <p class="text-slate-400 mb-0 flex justify-between align-center"><a
-                                        href="{{ asset('storage/article/' . $article->file) }} " target="_blank"
-                                        class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Download
-                                    </a> <a href="{{ route('like', $article->id) }}"
-                                        class="h6 text-lg font-medium hover:text-indigo-600 duration-500 ease-in-out"><i
-                                            class="mdi mdi-heart text-red-600"></i>Like</a> </p>
+                                <div class="px-3 pt-4">
+                                    <h5 class="mb-1 text-lg font-semibold"><a target="_blank"
+                                            class="transition-all duration-500 ease-in-out hover:text-red-600">{{ Str::limit(Str::title($article->title), '50', '...') }}</a>
+                                    </h5>
+                                    <span class="text-slate-400">
+                                        {{ Str::limit(Str::title($article->author), '20', '...') }}</span>
+                                    <p class="flex justify-between mb-0 text-slate-400 align-center"><a
+                                            href="{{ asset('storage/article/' . $article->file) }} " target="_blank"
+                                            class="text-white bg-indigo-600 border-indigo-600 rounded-md btn hover:bg-indigo-700 hover:border-indigo-700">Download
+                                        </a> <a href="{{ route('like', $article->id) }}"
+                                            class="text-lg font-medium duration-500 ease-in-out h6 hover:text-indigo-600"><i
+                                                class="text-red-600 mdi mdi-heart"></i>Like</a> </p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

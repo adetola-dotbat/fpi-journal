@@ -38,6 +38,11 @@ class ArticleController extends Controller
         return view('user.pages.articles', compact('volumes', 'articles'));
     }
 
+    public function view($id)
+    {
+        $article = $this->article->find($id);
+        return view('user.pages.view-article', compact('article'));
+    }
     public function showArticle()
     {
         // show all article saved by users in admin table

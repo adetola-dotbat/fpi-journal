@@ -21,12 +21,13 @@ Route::get('/guideline', [ArticleTemplateController::class, 'index'])->name('art
 Route::get('/article-template', [GuidelineController::class, 'index'])->name('guideline');
 Route::get('/editor-board', [EditorController::class, 'index'])->name('editor');
 Route::get('articles', [ArticleController::class, 'articles'])->name('articles');
+Route::get('articles/view/{id}', [ArticleController::class, 'view'])->name('articles.view');
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/like/{like}', [ArticleController::class, 'like'])->name('like');
 
 
 Route::group(['middleware' => ['auth']], function () {
-    
+
     Route::prefix('manuscript')->group(function () {
         Route::get('/', [ManuscriptController::class, 'manuscript'])->name('manuscript');
         Route::post('/store', [ManuscriptController::class, 'store'])->name('store.manuscript');
