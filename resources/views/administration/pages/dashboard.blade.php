@@ -26,20 +26,17 @@
                             <div class="card-inner">
                                 <div class="card-title-group">
                                     <div class="card-title">
-                                        <h6 class="title">Presidential Poll
-                                            Result</h6>
+                                        <h6 class="title">Total Volume</h6>
                                     </div>
                                 </div>
                                 <div class="data">
                                     <div class="data-group">
-                                        <div class="amount">1,945</div>
+                                        <div class="amount">{{ $volumes->count() }}</div>
                                         <div class="nk-ecwg6-ck"><canvas class="ecommerce-line-chart-s3"
                                                 id="todayOrders"></canvas>
                                         </div>
                                     </div>
-                                    <div class="info"><span class="change up text-danger"><em
-                                                class="icon ni ni-arrow-long-up"></em>Total
-                                            Votes</span></div>
+
                                 </div>
                             </div>
                         </div>
@@ -51,146 +48,22 @@
                             <div class="card-inner">
                                 <div class="card-title-group">
                                     <div class="card-title">
-                                        <h6 class="title">Central Senatorial
-                                            Result</h6>
+                                        <h6 class="title">Total Articles</h6>
                                     </div>
                                 </div>
                                 <div class="data">
                                     <div class="data-group">
-                                        <div class="amount">2,338</div>
+                                        <div class="amount">{{ $articles->count() }}</div>
                                         <div class="nk-ecwg6-ck"><canvas class="ecommerce-line-chart-s3"
                                                 id="todayRevenue"></canvas>
                                         </div>
                                     </div>
-                                    <div class="info"><span class="change up text-danger"><em
-                                                class="icon ni ni-arrow-long-up"></em>Total
-                                            Votes</span></div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-3 col-sm-6">
-                    <div class="card">
-                        <div class="nk-ecwg nk-ecwg6">
-                            <div class="card-inner">
-                                <div class="card-title-group">
-                                    <div class="card-title">
-                                        <h6 class="title">East Senatorial Result
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="data">
-                                    <div class="data-group">
-                                        <div class="amount">847</div>
-                                        <div class="nk-ecwg6-ck"><canvas class="ecommerce-line-chart-s3"
-                                                id="todayCustomers"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="info"><span class="change up text-danger"><em
-                                                class="icon ni ni-arrow-long-up"></em>Total
-                                            Votes</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-sm-6">
-                    <div class="card">
-                        <div class="nk-ecwg nk-ecwg6">
-                            <div class="card-inner">
-                                <div class="card-title-group">
-                                    <div class="card-title">
-                                        <h6 class="title">West Senatorial Result
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="data">
-                                    <div class="data-group">
-                                        <div class="amount">23,485</div>
-                                        <div class="nk-ecwg6-ck"><canvas class="ecommerce-line-chart-s3"
-                                                id="todayVisitors"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="info"><span class="change up text-danger"><em
-                                                class="icon ni ni-arrow-long-up"></em>Total
-                                            Votes</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-8">
-                    <div class="card card-full">
-                        <div class="card-inner">
-                            <div class="card-title-group">
-                                <div class="card-title">
-                                    <h6 class="title">Recently Added Presidential Poll Results</h6>
-                                </div>
-                                <div class="card-tools"><a href="" class="link">Check
-                                        Details</a></div>
-                            </div>
-                        </div>
-                        <div class="nk-tb-list mt-n2">
-                            <div class="nk-tb-item nk-tb-head">
-                                <div class="nk-tb-col"><span>LGA</span>
-                                </div>
-
-                                <div class="nk-tb-col tb-col-sm">
-                                    <span>WARDS</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-sm">
-                                    <span>POLLING UNIT</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-sm">
-                                    <span>REGISTERED VOTES</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-sm">
-                                    <span>ACCREDITED VOTED</span>
-                                </div>
-
-                                <div class="nk-tb-col tb-col-sm">
-                                    <span>APC</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-md"><span>PDP</span>
-                                </div>
-                                <div class="nk-tb-col"><span>LP</span></div>
-                                <div class="nk-tb-col"><span class="d-none d-sm-inline">NNPP</span>
-                                </div>
-                                <div class="nk-tb-col"><span class="d-none d-sm-inline">OTHERS</span>
-                                </div>
-                            </div>
-
-                            <div class="nk-tb-item">
-                                <div class="nk-tb-col"><span class="tb-lead">result</span></div>
-                                <div class="nk-tb-col"><span class="tb-lead">result</span></div>
-                                <div class="nk-tb-col"><span class="tb-lead">result
-                                        <div class="user-card">
-
-                                            <div class="user-name"><span class="tb-lead">result</span>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="nk-tb-col tb-col-md"><span class="tb-sub">result</span>
-                                </div>
-                                <div class="nk-tb-col"><span class="tb-sub tb-amount">result
-                                    </span></div>
-                                <div class="nk-tb-col"><span class="tb-sub tb-amount">result
-                                    </span></div>
-                                <div class="nk-tb-col"><span class="tb-sub tb-amount">result
-                                    </span></div>
-                                <div class="nk-tb-col"><span class="tb-sub tb-amount">result
-                                    </span></div>
-                                <div class="nk-tb-col"><span class="tb-sub tb-amount">result
-                                    </span></div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
 
             </div>
         </div>

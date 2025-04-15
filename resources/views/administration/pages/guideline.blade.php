@@ -21,7 +21,7 @@
         <div class="components-preview wide-md mx-auto">
             <div class="nk-block-head nk-block-head-lg wide-sm">
                 <div class="nk-block-head-content">
-                    <h2 class="nk-block-title fw-normal">Guideline</h2>
+                    <h2 class="nk-block-title fw-normal">Article Template</h2>
                 </div>
             </div>
             <div class="nk-block nk-block-lg">
@@ -29,16 +29,43 @@
                     <div class="col-lg-12">
                         <div class="card card-bordered h-100">
                             <div class="card-inner">
+                                <form action="{{ route('admin.update.guideline.file') }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @method('post')
+                                    @csrf
+
+                                    <input type="hidden" name="guideline_id" value="{{ $guideline->id }}">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="form-label">File</label>
+                                                <input type="file" name="file" class="form-file-input dropify"
+                                                    required>
+                                            </div>
+                                            <div class="form-group d-inline-flex ">
+                                                <button type="submit" class="btn btn-secondary">Change
+                                                    file
+                                                </button>
+
+                                                <a href="{{ asset('/storage/guideline/' . $guideline->file) }}"
+                                                    target="_blank" class="btn btn-secondary mx-3">View file</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
+
                                 <form action="{{ route('admin.update.guideline') }}" method="POST">
                                     @method('post')
                                     @csrf
+
                                     <div class="form-group">
-                                        <label class="form-label">Guideline</label>
+                                        <label class="form-label">Template</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="guideline" placeholder="Write your message">{{ $guideline->guideline ?? 'none' }}</textarea>
+                                            <textarea class="form-control form-control-sm" name="guideline" placeholder="Write your message" required>{{ $guideline->guideline ?? 'none' }}</textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>

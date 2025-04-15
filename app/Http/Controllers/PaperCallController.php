@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CallForPaperRequest;
 use App\Http\Requests\UpdateCallForPaperRequest;
 use App\Models\Paper;
+use App\Models\User;
+use App\Notifications\CallForPaperNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+
 
 class PaperCallController extends Controller
 {
@@ -25,9 +29,12 @@ class PaperCallController extends Controller
     }
     public function update(CallForPaperRequest $request)
     {
+        $users = User::where('role', 'user')->get();
         $paper = $this->paper->first();
         $paper->update($request->validated());
-        return redirect()->back();
+        $details = ['date' => now()];
+        Notification::send($users, new CallForPaperNotification($details));
+        return redirect()->back()->with('message', 'Successful');
     }
     public function updatePaper(UpdateCallForPaperRequest $request)
     {

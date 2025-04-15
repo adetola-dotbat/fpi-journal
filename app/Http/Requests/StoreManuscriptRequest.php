@@ -13,7 +13,7 @@ class StoreManuscriptRequest extends BaseRequest
             'title' => 'required',
             'abstract' => 'required',
             'file' => 'required',
-            'page_no' => 'required',
+            // 'page_no' => 'required',
             'authors' => 'required',
             // 'user_id' => 'required',
         ];

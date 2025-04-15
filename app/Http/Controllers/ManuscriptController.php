@@ -6,6 +6,9 @@ use App\Enums\PublishStatus;
 use App\Http\Requests\StoreManuscriptRequest;
 use App\Http\Requests\UpdateManuscriptRequest;
 use App\Models\Manuscript;
+use App\Models\User;
+use App\Notifications\AdminReceiveManuscriptNotification;
+use App\Notifications\UserSentManuscriptNotification;
 use App\Traits\FileTrait;
 use Illuminate\Http\Request;
 
@@ -21,8 +24,10 @@ class ManuscriptController extends Controller
             return view('user.pages.manuscript');
         }
     }
-    public function store(StoreManuscriptRequest $request)
+      public function store(StoreManuscriptRequest $request)
     {
+        $user = User::find(auth()->user()->id);
+        $admin = User::where('role', 'admin')->first();
         $fileNameToStore = $this->fileUpload('file', 'storage/manuscript/');
         $this->manuscript->create(
             [
@@ -34,7 +39,16 @@ class ManuscriptController extends Controller
                 'user_id' => auth()->user()->id,
             ]
         );
-        return redirect()->back();
+        $manuscript = [
+            'title' => $request->title,
+            'abstract' => $request->abstract,
+            'file' => $fileNameToStore,
+            'user' => auth()->user()->name,
+        ];
+        $user->notify(new UserSentManuscriptNotification($manuscript));
+        $admin->notify(new AdminReceiveManuscriptNotification($manuscript));
+
+        return redirect()->back()->with('message', 'Successful');
     }
 
     public function show()
@@ -53,50 +67,15 @@ class ManuscriptController extends Controller
     {
         return view('administration.pages.manuscript');
     }
-
-    public function adminStoreManuscript(StoreManuscriptRequest $request)
-    {
-        $fileNameToStore = $this->fileUpload('file', 'storage/manuscript/');
-        $this->manuscript->create(
-            [
-                'title' => $request->title,
-                'abstract' => $request->abstract,
-                'file' => $fileNameToStore,
-                'page_no' => $request->page_no,
-                'authors' => $request->authors,
-                'user_id' => auth()->user()->id,
-            ]
-        );
-        return redirect()->back();
-    }
-    public function publish($manuscript)
-    {
-        $manuscript = $this->manuscript->find($manuscript);
-        if ($manuscript->publish_status == 'pending') {
-            $manuscript->publish_status = PublishStatus::PUBLISHED;
-            $manuscript->save();
-        } else {
-            $manuscript->publish_status = PublishStatus::PENDING;
-            $manuscript->save();
-        }
-
-        return redirect()->back();
-    }
-
     public function edit($manuscript)
     {
         $manuscript = $this->manuscript->find($manuscript);
         return view('administration.pages.edit-manuscript', compact('manuscript'));
     }
-    public function update(UpdateManuscriptRequest $request, $manuscript)
-    {
-        $manuscript = $this->manuscript->find($manuscript);
-        $manuscript->update($request->validated());
-        return redirect()->back();
-    }
+
     public function delete($manuscript)
     {
         $this->manuscript->find($manuscript)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 }

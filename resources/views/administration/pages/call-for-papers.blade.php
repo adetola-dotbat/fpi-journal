@@ -35,10 +35,10 @@
                                     <div class="form-group">
                                         <label class="form-label">Call for paper</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message">{{ $paper->description }}</textarea>
+                                            <textarea class="form-control form-control-sm" name="description" placeholder="Write your message" required>{{ $paper->description }}</textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save
+                                    <div class="form-group"><button type="submit" class="btn btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>

@@ -11,7 +11,7 @@ class Volume extends Model
 
     protected $guarded = [];
 
-    public function article()
+    public function articles()
     {
         return $this->hasMany(Article::class);
     }

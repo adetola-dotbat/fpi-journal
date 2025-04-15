@@ -30,7 +30,7 @@ class VolumeController extends Controller
                 'description' => $request->description,
                 'image' => $fileNameToStore,
             ]);
-            return redirect()->back();
+            return redirect()->back()->with('message', 'Successful');
         } else {
             abort('402');
         }
@@ -38,7 +38,7 @@ class VolumeController extends Controller
     public function update(UpdateVolumeRequest $request, $volume)
     {
         $volume = $this->volume->find($volume)->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 
     public function updateImage($volume)
@@ -48,7 +48,7 @@ class VolumeController extends Controller
         Storage::delete('storage/volume/' . $volume->image);
         $volume->image = $fileNameToStore;
         $volume->save();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
     public function edit($volume)
     {
@@ -67,6 +67,6 @@ class VolumeController extends Controller
             $volume->status = VolumeEnum::PENDING;
             $volume->save();
         }
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successful');
     }
 }

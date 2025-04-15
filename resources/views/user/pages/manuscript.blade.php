@@ -5,12 +5,12 @@
 
 @section('content')
     <!-- Start Hero -->
-    <section
-        class="relative table w-full py-32 lg:py-36 bg-[url('../../assets/images/real/bg/01.html')] bg-no-repeat bg-center bg-cover">
+    <section style="background-image: url({{ asset('storage/article-bg-image-02.jpg') }})"
+        class="relative table w-full py-32 lg:py-36 bg-no-repeat bg-center bg-cover">
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
             <div class="grid grid-cols-1 text-center mt-10">
-                <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white">
+                <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white z-1">
                     Submit Manuscript
                 </h3>
             </div>
@@ -46,13 +46,13 @@
                                             placeholder="Title">
                                     </div>
                                 </div>
-                                <div class="lg:col-span-6">
+                                {{-- <div class="lg:col-span-6">
                                     <div class="ltr:text-left rtl:text-right">
                                         <label for="page_no" class="font-semibold">Page No.:</label>
                                         <input name="page_no" id="page_no" type="text" class="form-input mt-3"
                                             placeholder="Page number">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="lg:col-span-6">
                                     <div class="ltr:text-left rtl:text-right">
                                         <label for="authors" class="font-semibold">Authors:</label>
@@ -60,7 +60,7 @@
                                             placeholder="Authors">
                                     </div>
                                 </div>
-                                <div class="lg:col-span-6">
+                                <div class="lg:col-span-12">
                                     <label class="font-semibold" for="file">Upload file:</label>
                                     <input class="form-input mt-3" id="resumefile" name="file" type="file">
                                 </div>

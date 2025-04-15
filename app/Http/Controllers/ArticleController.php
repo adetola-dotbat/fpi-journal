@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ManuscriptStatus;
 use App\Enums\PublishStatus;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Models\ArticleLike;
+use App\Models\Manuscript;
 use App\Models\Volume;
 use App\Traits\FileTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+
+use function PHPSTORM_META\type;
 
 class ArticleController extends Controller
 {
@@ -22,6 +29,13 @@ class ArticleController extends Controller
     {
         $articles =  $this->article->orderBy('id', 'desc')->get();
         return view('administration.pages.article', compact('articles'));
+    }
+
+    public function articles()
+    {
+        $volumes = Volume::get();
+        $articles =  $this->article->get();
+        return view('user.pages.articles', compact('volumes', 'articles'));
     }
 
     public function showArticle()
@@ -46,7 +60,7 @@ class ArticleController extends Controller
                 'author' => $request->author,
                 'user_id' => auth()->user()->id
             ]);
-            return redirect()->back();
+            return redirect()->back()->with('message', 'Article added successfully');
         } else {
             abort('402');
         }
@@ -63,7 +77,7 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, $article)
     {
         $this->article->find($article)->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successfully Edited');
     }
 
     public function updateFile($article)
@@ -73,15 +87,34 @@ class ArticleController extends Controller
         Storage::delete('storage/article/' . $article->file);
         $article->file = $fileNameToStore;
         $article->save();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'File Updated Successfully');
     }
 
-    public function like($item)
+    public function like($articleId)
     {
-        $article = $this->article->find($item);
-        ++$article->popularity;
-        $article->save();
-        return redirect()->back();
+        DB::transaction(function () use ($articleId) {
+            $article = $this->article->find($articleId);
+            if (!Session::get('guest_user')) {
+                Session::put('guest_user', uniqid());
+            }
+            $userSession = Session::get('guest_user');
+
+            $articleLike = ArticleLike::where('article_id', $articleId)->where('quest_user', $userSession)->first();
+
+            if (!$articleLike) {
+                Session::put('guest_user', uniqid());
+                $userSession = Session::get('guest_user');
+                ArticleLike::create(
+                    [
+                        'quest_user' => $userSession,
+                        'article_id' => $articleId
+                    ]
+                );
+                $article->popularity += 1;
+                $article->save();
+            }
+        });
+        return redirect()->back()->with('message', 'Your like is added');
     }
 
     public function publish($article)
@@ -96,19 +129,30 @@ class ArticleController extends Controller
             $article->save();
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Publish status changed');
+    }
+
+    public function saveArticle(StoreArticleRequest $request, $article)
+    {
+        DB::transaction(function () use ($request, $article) {
+            $manuscript = Manuscript::find($article);
+            $manuscript->status = ManuscriptStatus::INACTIVE;
+            $manuscript->save();
+
+            $this->store($request);
+        });
+        return redirect()->back()->with('message', 'Article saved successfully');
     }
 
 
     public function adminCreateArticle()
     {
-        // admin to create final article
         return view('administration.pages.article', compact('article'));
     }
 
     public function delete($article)
     {
         $this->article->find($article)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Article deleted Successfully');
     }
 }

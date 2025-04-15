@@ -11,6 +11,8 @@ class UpdateAboutRequest extends BaseRequest
     {
         return [
             'name' => 'required',
+             'email' => 'required',
+            'phone' => 'required',
             'location' => 'required',
             'description' => 'required',
             'welcome_message' => 'required'

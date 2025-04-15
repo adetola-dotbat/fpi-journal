@@ -5,12 +5,12 @@
 
 @section('content')
     <!-- Start Hero -->
-    <section
+    <section style="background-image: url({{ asset('storage/article-bg-image-03.jpg') }})"
         class="relative table w-full py-32 lg:py-36 bg-[url('../../assets/images/real/bg/01.html')] bg-no-repeat bg-center bg-cover">
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
             <div class="grid grid-cols-1 text-center mt-10">
-                <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white">
+                <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white z-1">
                     Editorial Board
                 </h3>
             </div>
@@ -41,7 +41,7 @@
             @foreach ($designations as $designation)
                 <div class="grid grid-cols-1 pb-8 text-center py-32">
                     <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">
-                        {{ $designation->designation }}
+                        {{ Str::title($designation->designation) }}
                     </h3>
                 </div>
                 <!--end grid-->

@@ -33,7 +33,7 @@ class DesignationController extends Controller
     public function update(UpdateDesignationRequest $request, $designation)
     {
         $this->designation->find($designation)->update($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Designation saved successfully');
     }
 
     public function delete($designation)

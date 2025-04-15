@@ -18,7 +18,7 @@
                     <h6 class="overline-title text-primary-alt">Menu</h6>
                 </li>
 
-                <li class="nk-menu-item"><a href="" class="nk-menu-link"><span class="nk-menu-icon"><em
+                <li class="nk-menu-item"><a href="{{ route('admin.dashboard') }}" class="nk-menu-link"><span class="nk-menu-icon"><em
                                 class="icon ni ni-growth-fill"></em></span><span
                             class="nk-menu-text">Dashboard</span></a></li>
 
@@ -36,10 +36,11 @@
                         <li class="nk-menu-item"><a href="{{ route('admin.paper') }}" class="nk-menu-link"><span
                                     class="nk-menu-text">Call for papers
                                 </span></a></li>
-                        <li class="nk-menu-item"><a href="{{ route('admin.guideline') }}" class="nk-menu-link"><span
-                                    class="nk-menu-text">Guideline
-                                </span></a></li>
-
+                                    <li class="nk-menu-item"><a href="{{ route('admin.article.template') }}"
+                                class="nk-menu-link"><span class="nk-menu-text">Guideline
+                                </span></a>
+                        </li>
+                      
                     </ul>
                 </li>
                 <li class="nk-menu-item has-sub"><a href="#" class="nk-menu-link nk-menu-toggle"><span
@@ -61,10 +62,11 @@
                                     class="nk-menu-text">Article
                                 </span></a>
                         </li>
-                        <li class="nk-menu-item"><a href="{{ route('admin.article.template') }}"
-                                class="nk-menu-link"><span class="nk-menu-text">Article Template
-                                </span></a>
-                        </li>
+                    
+                          <li class="nk-menu-item"><a href="{{ route('admin.guideline') }}" class="nk-menu-link"><span
+                                    class="nk-menu-text">Article Template
+                                </span></a></li>
+
                         <li class="nk-menu-item"><a href="{{ route('admin.volume') }}" class="nk-menu-link"><span
                                     class="nk-menu-text">Volume
                                 </span></a></li>
