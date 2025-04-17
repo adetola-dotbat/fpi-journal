@@ -126,8 +126,7 @@
                         <p class="max-w-xl text-slate-400">
                             {{ $about->welcome_message }}
                         </p>
-                        <i class="text-xl text-indigo-600 uil uil-check-circle me-2"></i>
-                        {{ $editorInCharge->name }} - Chief Editor
+                       
                         <div class="mt-6">
                             <a href="{{ route('about') }}"
                                 class="text-white bg-indigo-600 border-indigo-600 rounded-md btn hover:bg-indigo-700 hover:border-indigo-700">Read
