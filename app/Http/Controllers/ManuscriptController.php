@@ -15,16 +15,14 @@ use Illuminate\Http\Request;
 class ManuscriptController extends Controller
 {
     use FileTrait;
-    public function __construct(protected Manuscript $manuscript)
-    {
-    }
+    public function __construct(protected Manuscript $manuscript) {}
     public function manuscript()
     {
         if (auth()->user()->role == 'user') {
             return view('user.pages.manuscript');
         }
     }
-      public function store(StoreManuscriptRequest $request)
+    public function store(StoreManuscriptRequest $request)
     {
         $user = User::find(auth()->user()->id);
         $admin = User::where('role', 'admin')->first();

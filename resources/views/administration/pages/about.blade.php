@@ -14,7 +14,7 @@
 @endpush
 @section('content')
     <div class="nk-content-body">
-        <div class="components-preview wide-md mx-auto">
+        <div class="mx-auto components-preview wide-md">
             <div class="nk-block-head nk-block-head-lg wide-sm">
                 <div class="nk-block-head-content">
                     <h2 class="nk-block-title fw-normal">Edit About</h2>
@@ -43,14 +43,14 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="form-group mt-4">
+                                            <div class="mt-4 form-group">
                                                 @isset($about->image)
                                                     <img height="250" width="400"
                                                         src="{{ asset('/storage/logo/' . $about->image) }}">
                                                 @endisset
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </form>
                                 <hr>
@@ -62,8 +62,8 @@
                                         <input type="text" value="{{ $about->name ?? 'none' }}" name="name"
                                             class="form-control" required>
                                     </div>
-                                    
-                                     <div class="form-group">
+
+                                    <div class="form-group">
                                         <label class="form-label">Email</label>
                                         <input type="text" value="{{ $about->email ?? 'none' }}" name="email"
                                             class="form-control" required>

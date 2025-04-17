@@ -10,8 +10,8 @@
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
 
-            <div class="grid grid-cols-1 text-center mt-10">
-                <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white z-1">
+            <div class="grid grid-cols-1 mt-10 text-center">
+                <h3 class="text-3xl font-medium leading-normal text-white md:text-4xl md:leading-normal z-1">
                     Article Template
                 </h3>
             </div>
@@ -19,23 +19,27 @@
         </div>
         <!--end container-->
     </section>
-    <section class="relative md:py-24 py-16">
+    <section class="relative py-16 md:py-24">
         <div class="container">
             <div class="grid grid-cols-1 items-center gap-[30px]">
                 <div class="">
-                     <div class="flex justify-between">
-        <h4 class="text-3xl font-semibold "> Template Structure</h4>
-        <a href="{{ asset('/storage/guideline/' . $guideline->file) }}" target="_blank"
-            class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Download Template</a>
-    </div>
+                    <div class="flex justify-between">
+                        <h4 class="text-3xl font-semibold "> Template Structure</h4>
+                        <a href="{{ asset('/storage/guideline/' . $guideline->file) }}" target="_blank"
+                            class="text-white bg-indigo-600 border-indigo-600 rounded-md btn hover:bg-indigo-700 hover:border-indigo-700">Download
+                            Template</a>
+                    </div>
 
-                    <pre class=" rounded-md text-black dark:text-white shadow dark:shadow-gray-800 overflow-x-scroll">
+                    <pre class="overflow-x-scroll text-black rounded-md shadow dark:text-white dark:shadow-gray-800">
                     {!! $guideline->guideline !!}
                 </pre>
                 </div>
             </div>
-            <!--grid-->
-            
+            <div class="mt-6">
+                <a href="{{ asset('/storage/guideline/' . $guideline->file) }}" target="_blank"
+                    class="text-white bg-indigo-600 border-indigo-600 rounded-md btn hover:bg-indigo-700 hover:border-indigo-700">View
+                    Guideline</a>
+            </div>
         </div>
         <!--end container-->
     </section>

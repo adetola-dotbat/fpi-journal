@@ -16,8 +16,10 @@ class GuidelineFactory extends Factory
      */
     public function definition(): array
     {
+        $file = 'guideline.docx';
         return [
             'guideline' => fake()->sentence(),
+            'file' => $file,
         ];
     }
 }

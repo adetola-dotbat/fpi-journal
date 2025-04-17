@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title> @yield('pageName') |  Ilaro Journal of Humanities and Management (IJHM)</title>
+    <title> @yield('pageName') | Ilaro Journal of Humanities and Management (IJHM)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Tailwind CSS Saas & Software Landing Page Template" />
     <meta name="keywords"
@@ -29,10 +29,12 @@
     @if (Session::has('message'))
         @include('toastr.toastrstyle')
     @endif
+    <!-- Google Tag Manager -->
+
 
 </head>
 
-<body class="font-nunito text-base text-black">
+<body class="text-base text-black font-nunito">
     <!-- Start Navbar -->
     @include('user.inc.navbar')
     {{-- content --}}
@@ -42,7 +44,7 @@
 
     <!-- Back to top -->
     <a href="#" onclick="topFunction()" id="back-to-top"
-        class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-indigo-600 text-white leading-9"><i
+        class="fixed z-10 hidden text-lg leading-9 text-center text-white bg-indigo-600 rounded-full back-to-top bottom-5 end-5 h-9 w-9"><i
             class="uil uil-arrow-up"></i></a>
     <!-- Back to top -->
 
@@ -60,6 +62,7 @@
         @include('toastr.toastrscript')
     @endif
 
+    </div>
 
 </body>
 

@@ -1,4 +1,4 @@
-<footer class="footer bg-dark-footer relative text-gray-200">
+<footer class="relative text-gray-200 footer bg-dark-footer">
     <div class="py-[30px] px-0 border-t border-slate-800">
         <div class="container text-center">
             <div class="grid grid-cols-1">
@@ -8,8 +8,8 @@
                         <script>
                             document.write(new Date().getFullYear());
                         </script>
-                         Ilaro Journal of Humanities and Management (IJHM) with
-                        <i class="mdi mdi-heart text-red-600"></i>
+                        Ilaro Journal of Humanities and Management (IJHM) with
+                        <i class="text-red-600 mdi mdi-heart"></i>
                         <a href="https://www.federalpolyilaro.edu.ng/" target="_blank" class="text-reset">The Federal
                             Polytechnic,
                             Ilaro</a>.

@@ -5,12 +5,12 @@
 
 @section('content')
     <!-- Start Hero -->
-    <section class="md:h-screen flex py-36 w-full items-center  bg-center bg-no-repeat bg-cover">
+    <section class="flex items-center w-full bg-center bg-no-repeat bg-cover md:h-screen py-36">
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="container z-10">
-            <div class="lg:flex justify-center mt-12">
-                <div class="lg:w-11/12 bg-white dark:bg-slate-900 rounded-md shadow-lg dark:shadow-gray-800 overflow-hidden">
-                    <div class="grid md:grid-cols-12 grid-cols-1 items-center">
+            <div class="justify-center mt-12 lg:flex">
+                <div class="overflow-hidden bg-white rounded-md shadow-lg lg:w-11/12 dark:bg-slate-900 dark:shadow-gray-800">
+                    <div class="grid items-center grid-cols-1 md:grid-cols-12">
                         <div class="lg:col-span-6 md:col-span-6">
                             <div class="w-full leading-[0] border-0">
                                 <iframe
@@ -22,34 +22,34 @@
 
                         <div class="lg:col-span-6 md:col-span-6">
                             <div class="p-6">
-                                <h3 class="mb-6 text-2xl leading-normal font-medium">Welcome Message</h3>
+                                <h3 class="mb-6 text-2xl font-medium leading-normal">Welcome Message</h3>
                                 <p class="text-slate-400">{{ $contact->welcome_message }}</p>
 
                                 <div class="flex items-center mt-6">
                                     <i data-feather="mail" class="w-6 h-6 me-4"></i>
                                     <div class="">
-                                        <h5 class="title font-bold mb-0">Email</h5>
+                                        <h5 class="mb-0 font-bold title">Email</h5>
                                         <a
-                                            class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ $contact->email }}</a>
+                                            class="text-indigo-600 duration-500 ease-in-out btn btn-link hover:text-indigo-600 after:bg-indigo-600">{{ $contact->email }}</a>
                                     </div>
                                 </div>
 
                                 <div class="flex items-center mt-6">
                                     <i data-feather="phone" class="w-6 h-6 me-4"></i>
                                     <div class="">
-                                        <h5 class="title font-bold mb-0">Phone</h5>
+                                        <h5 class="mb-0 font-bold title">Phone</h5>
                                         <a href="tel:+152534-468-854"
-                                            class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ $contact->phone }}</a>
+                                            class="text-indigo-600 duration-500 ease-in-out btn btn-link hover:text-indigo-600 after:bg-indigo-600">{{ $contact->phone }}</a>
                                     </div>
                                 </div>
 
                                 <div class="flex items-center mt-6">
 
                                     <div class="">
-                                        <h5 class="title font-bold mb-0">Location</h5>
+                                        <h5 class="mb-0 font-bold title">Location</h5>
 
                                         <a
-                                            class="video-play-icon btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 transition duration-500 lightbox">{{ $contact->location }}</a>
+                                            class="text-indigo-600 transition duration-500 video-play-icon btn btn-link hover:text-indigo-600 after:bg-indigo-600 lightbox">{{ $contact->location }}</a>
                                     </div>
                                 </div>
 
