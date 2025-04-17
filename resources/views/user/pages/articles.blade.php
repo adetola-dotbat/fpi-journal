@@ -67,9 +67,6 @@
                                     class="p-5 pb-0 rounded-md shadow dark:shadow-gray-800 bg-indigo-600/5 dark:bg-indigo-600/30"
                                     alt="">
 
-                                <!--<div-->
-                                <!--    class="absolute z-0 transition duration-500 rounded-md inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90">-->
-                                <!--</div>-->
 
                                 <div class="px-3 pt-4">
                                     <h5 class="mb-1 text-lg font-semibold"><a target="_blank"
