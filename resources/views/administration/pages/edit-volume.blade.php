@@ -17,13 +17,12 @@
 @endpush
 @section('content')
     <div class="nk-content-body">
-        <div class="components-preview wide-md mx-auto">
+        <div class="mx-auto components-preview wide-md">
             <div class="nk-block-head nk-block-head-lg wide-sm">
                 <div class="nk-block-head-content">
                     <h2 class="nk-block-title fw-normal">Edit Volume</h2>
                 </div>
             </div>
-
 
             <div class="nk-block nk-block-lg">
                 <div class="row g-gs">
@@ -43,13 +42,13 @@
                                                     required>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn  btn-secondary">Change
+                                                <button type="submit" class="btn btn-secondary">Change
                                                     Image
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="form-group mt-4">
+                                            <div class="mt-4 form-group">
                                                 <img height="250" width="400"
                                                     src="{{ asset('/storage/volume/' . $volume->image) }}">
                                             </div>
@@ -64,7 +63,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Title</label>
                                         <input type="text" value="{{ $volume->title }}" name="title"
-                                            class="form-control" required </div>
+                                            class="form-control" required>
 
                                         <div class="form-group">
                                             <label class="form-label">Description</label>
@@ -72,78 +71,80 @@
                                                 <textarea class="form-control form-control-sm" name="description" required>{{ $volume->description }}</textarea>
                                             </div>
                                         </div>
-                                        <div class="form-group"><button type="submit" class="btn  btn-secondary">Save
+                                        <div class="form-group"><button type="submit" class="btn btn-secondary">Save
                                             </button></div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="card card-bordered h-100">
-                            <div class="card-inner">
-                                <div class="nk-block-head-content mb-5">
-                                    <h2 class="nk-block-title fw-normal">Volume Table</h2>
-                                </div>
-                                <div class="table-responsive">
-                                    <table id="employee_data" class="table table-bordered">
-                                        <thead>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card card-bordered h-100">
+                        <div class="card-inner">
+                            <div class="mb-5 nk-block-head-content">
+                                <h2 class="nk-block-title fw-normal">Volume Table</h2>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="employee_data" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <td>#</td>
+                                            <td>Title</td>
+                                            <td>Description</td>
+                                            <td>Image</td>
+                                            <td>Action</td>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @forelse ($volumes as $item)
                                             <tr>
-                                                <td>#</td>
-                                                <td>Title</td>
-                                                <td>Description</td>
-                                                <td>Image</td>
-                                                <td>Action</td>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            @forelse ($volumes as $item)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->title }}</td>
-                                                    <td>{!! $item->description !!}</td>
-                                                    <td> <img width="200" height="100"
-                                                            src="{{ asset('/storage/volume/' . $item->image) }}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="dropdown"><a href="#" class="btn btn-secondary"
-                                                                data-bs-toggle="dropdown" aria-expanded="false"><span>Action
-                                                                </span><em class="icon ni ni-chevron-down"></em></a>
-                                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-auto mt-1"
-                                                                style="">
-                                                                <ul class="link-list-plain">
-                                                                    <li><a
-                                                                            href="{{ route('admin.edit.volume', $item->id) }}">Edit</a>
-                                                                    </li>
-                                                                    <li><a
-                                                                            href="{{ route('admin.status.volume', $item->id) }}">
-                                                                            @if ($item->status == 'pending')
-                                                                                Activate
-                                                                            @else
-                                                                                Inactive
-                                                                            @endif
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->title }}</td>
+                                                <td>{!! $item->description !!}</td>
+                                                <td> <img width="200" height="100"
+                                                        src="{{ asset('/storage/volume/' . $item->image) }}">
+                                                </td>
+                                                <td>
+                                                    <div class="dropdown"><a href="#" class="btn btn-secondary"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><span>Action
+                                                            </span><em class="icon ni ni-chevron-down"></em></a>
+                                                        <div class="mt-1 dropdown-menu dropdown-menu-end dropdown-menu-auto"
+                                                            style="">
+                                                            <ul class="link-list-plain">
+                                                                <li><a
+                                                                        href="{{ route('admin.status.volume', $item->id) }}">
+                                                                        @if ($item->status == 'pending')
+                                                                            Activate
+                                                                        @else
+                                                                            Inactive
+                                                                        @endif
+                                                                    </a>
+                                                                    <a href="{{ route('admin.edit.volume', $item->id) }}">
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
                                                         </div>
-                                                    </td>
-                                                @empty
-                                                    No data found
-                                                </tr>
-                                            @endforelse
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        @empty
+                                            No data found
+                                        @endforelse
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
                 </div>
-            </div>
 
+            </div>
         </div>
+
+    </div>
     </div>
 @endsection
 @push('script')

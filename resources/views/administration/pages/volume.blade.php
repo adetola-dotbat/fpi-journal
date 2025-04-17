@@ -17,7 +17,7 @@
 @endpush
 @section('content')
     <div class="nk-content-body">
-        <div class="components-preview wide-md mx-auto">
+        <div class="mx-auto components-preview wide-md">
             <div class="nk-block-head nk-block-head-lg wide-sm">
                 <div class="nk-block-head-content">
                     <h2 class="nk-block-title fw-normal">Volume</h2>
@@ -52,7 +52,7 @@
                                             <textarea class="form-control form-control-sm" name="description" placeholder="Write your message" required></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group"><button type="submit" class="btn  btn-secondary">Save
+                                    <div class="form-group"><button type="submit" class="btn btn-secondary">Save
                                         </button></div>
                                 </form>
                             </div>
@@ -61,7 +61,7 @@
                     <div class="col-lg-12">
                         <div class="card card-bordered h-100">
                             <div class="card-inner">
-                                <div class="nk-block-head-content mb-5">
+                                <div class="mb-5 nk-block-head-content">
                                     <h2 class="nk-block-title fw-normal">Volume Table</h2>
                                 </div>
                                 <div class="table-responsive">
@@ -89,7 +89,7 @@
                                                         <div class="dropdown"><a href="#" class="btn btn-secondary"
                                                                 data-bs-toggle="dropdown" aria-expanded="false"><span>Action
                                                                 </span><em class="icon ni ni-chevron-down"></em></a>
-                                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-auto mt-1"
+                                                            <div class="mt-1 dropdown-menu dropdown-menu-end dropdown-menu-auto"
                                                                 style="">
                                                                 <ul class="link-list-plain">
                                                                     <li><a
@@ -99,6 +99,11 @@
                                                                             @else
                                                                                 Inactive
                                                                             @endif
+                                                                        </a>
+                                                                    </li>
+                                                                    <li><a
+                                                                            href="{{ route('admin.edit.volume', $item->id) }}">
+                                                                            Edit Volume
                                                                         </a>
                                                                     </li>
                                                                 </ul>
